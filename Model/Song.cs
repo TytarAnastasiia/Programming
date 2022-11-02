@@ -8,9 +8,19 @@ namespace Programming.Model
 {
     class Song
     {
-        string performer;
-        string name;
-        string album;
-        int year; // 1900...
+        public string Performer { set; get; }
+        public string Name { set; get; }
+        public string Album { set; get; }
+        public int Year { set; get; }
+
+        public Song() { }
+
+        public Song(string performer, string name, string album, int year)
+        {
+            Performer = performer;
+            Name = name;
+            Album = album;
+            Year = year;
+        }
     }
 }

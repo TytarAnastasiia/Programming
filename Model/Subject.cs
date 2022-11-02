@@ -8,10 +8,23 @@ namespace Programming.Model
 {
     class Subject
     {
-        string teacherName;
-        string name;
-        string department;
-        int grade;
-        int hours;
+ 
+        public string TeacherName { set; get; }
+        public string Name { set; get; }
+        public string Department { set; get; }
+        public int Grade { set; get; }
+        public int Hours { set; get; }
+
+        public Subject() { }
+
+        public Subject(string teacherName, string name, string department, int grade, int hours)
+        {
+            TeacherName = teacherName;
+            Name = name;
+            Department = department;
+            Grade = grade;
+            Hours = hours;
+        }
     }
+
 }

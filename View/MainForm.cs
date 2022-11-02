@@ -87,7 +87,27 @@ namespace Programming
             }
             return indexOfMax;
         }
-        
+
+        /// <summary>
+        /// Метод поиска фильма с максимальным рейтингом в массиве.
+        /// </summary>
+        /// <param name="mass"></param>
+        /// <returns></returns>
+        private int FindMovieWithMaxRating(Movie[] mass)
+        {
+            double max = 0;
+            int indexOfMax = 0;
+            for (int i = 0; i < mass.Length; i++)
+            {
+                if (mass[i].Rating > max)
+                {
+                    max = mass[i].Rating;
+                    indexOfMax = i;
+                }
+            }
+            return indexOfMax;
+        }
+
         /// <summary>
         /// Кнопка Find выводит прямоугольник с максимальной шириной.
         /// </summary>
@@ -96,6 +116,17 @@ namespace Programming
         private void button_Find_Click(object sender, EventArgs e)
         {
             listBox_Rectangles.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+        }
+
+        /// <summary>
+        /// Кнопка Find выводит фильм с максимальным рейтингом.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void button_FindMovie_Click(object sender, EventArgs e)
+        {
+            listBox_Movies.SelectedIndex = FindMovieWithMaxRating(_movies);
         }
 
         /// <summary>

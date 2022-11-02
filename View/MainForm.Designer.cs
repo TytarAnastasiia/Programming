@@ -79,7 +79,7 @@
             this.tabControl_Enums.Controls.Add(this.tabPage_Rectangles);
             this.tabControl_Enums.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_Enums.Location = new System.Drawing.Point(0, 0);
-            this.tabControl_Enums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl_Enums.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl_Enums.Name = "tabControl_Enums";
             this.tabControl_Enums.SelectedIndex = 0;
             this.tabControl_Enums.Size = new System.Drawing.Size(741, 419);
@@ -91,9 +91,9 @@
             this.tabPage_Enums.Controls.Add(this.seasonHandleControl2);
             this.tabPage_Enums.Controls.Add(this.enumerationsControl2);
             this.tabPage_Enums.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Enums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Enums.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Enums.Name = "tabPage_Enums";
-            this.tabPage_Enums.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Enums.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage_Enums.Size = new System.Drawing.Size(733, 393);
             this.tabPage_Enums.TabIndex = 0;
             this.tabPage_Enums.Text = "Enums";
@@ -104,7 +104,7 @@
             this.weekdayParsingControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.weekdayParsingControl2.Dock = System.Windows.Forms.DockStyle.Left;
             this.weekdayParsingControl2.Location = new System.Drawing.Point(2, 239);
-            this.weekdayParsingControl2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.weekdayParsingControl2.Margin = new System.Windows.Forms.Padding(1);
             this.weekdayParsingControl2.Name = "weekdayParsingControl2";
             this.weekdayParsingControl2.Size = new System.Drawing.Size(343, 152);
             this.weekdayParsingControl2.TabIndex = 9;
@@ -114,7 +114,7 @@
             this.seasonHandleControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.seasonHandleControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.seasonHandleControl2.Location = new System.Drawing.Point(340, 239);
-            this.seasonHandleControl2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.seasonHandleControl2.Margin = new System.Windows.Forms.Padding(1);
             this.seasonHandleControl2.Name = "seasonHandleControl2";
             this.seasonHandleControl2.Size = new System.Drawing.Size(391, 152);
             this.seasonHandleControl2.TabIndex = 8;
@@ -124,7 +124,7 @@
             this.enumerationsControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.enumerationsControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.enumerationsControl2.Location = new System.Drawing.Point(2, 2);
-            this.enumerationsControl2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.enumerationsControl2.Margin = new System.Windows.Forms.Padding(1);
             this.enumerationsControl2.Name = "enumerationsControl2";
             this.enumerationsControl2.Size = new System.Drawing.Size(729, 237);
             this.enumerationsControl2.TabIndex = 7;
@@ -134,9 +134,9 @@
             this.tabPage_Classes.Controls.Add(this.groupBox_Movies);
             this.tabPage_Classes.Controls.Add(this.groupBox_Rectangles);
             this.tabPage_Classes.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Classes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Classes.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Classes.Name = "tabPage_Classes";
-            this.tabPage_Classes.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Classes.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage_Classes.Size = new System.Drawing.Size(733, 393);
             this.tabPage_Classes.TabIndex = 1;
             this.tabPage_Classes.Text = "Classes";
@@ -158,9 +158,9 @@
             this.groupBox_Movies.Controls.Add(this.listBox_Movies);
             this.groupBox_Movies.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox_Movies.Location = new System.Drawing.Point(362, 2);
-            this.groupBox_Movies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_Movies.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_Movies.Name = "groupBox_Movies";
-            this.groupBox_Movies.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_Movies.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox_Movies.Size = new System.Drawing.Size(369, 389);
             this.groupBox_Movies.TabIndex = 1;
             this.groupBox_Movies.TabStop = false;
@@ -189,7 +189,7 @@
             // textBox_Rating
             // 
             this.textBox_Rating.Location = new System.Drawing.Point(187, 220);
-            this.textBox_Rating.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Rating.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Rating.Name = "textBox_Rating";
             this.textBox_Rating.Size = new System.Drawing.Size(91, 20);
             this.textBox_Rating.TabIndex = 17;
@@ -198,7 +198,7 @@
             // textBox_Genre
             // 
             this.textBox_Genre.Location = new System.Drawing.Point(187, 179);
-            this.textBox_Genre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Genre.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Genre.Name = "textBox_Genre";
             this.textBox_Genre.Size = new System.Drawing.Size(91, 20);
             this.textBox_Genre.TabIndex = 16;
@@ -227,12 +227,13 @@
             // button_FindMovie
             // 
             this.button_FindMovie.Location = new System.Drawing.Point(39, 219);
-            this.button_FindMovie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_FindMovie.Margin = new System.Windows.Forms.Padding(2);
             this.button_FindMovie.Name = "button_FindMovie";
             this.button_FindMovie.Size = new System.Drawing.Size(67, 20);
             this.button_FindMovie.TabIndex = 13;
             this.button_FindMovie.Text = "Find";
             this.button_FindMovie.UseVisualStyleBackColor = true;
+            this.button_FindMovie.Click += new System.EventHandler(this.button_FindMovie_Click);
             // 
             // label_Name
             // 
@@ -247,7 +248,7 @@
             // textBox_Year
             // 
             this.textBox_Year.Location = new System.Drawing.Point(187, 135);
-            this.textBox_Year.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Year.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Year.Name = "textBox_Year";
             this.textBox_Year.Size = new System.Drawing.Size(91, 20);
             this.textBox_Year.TabIndex = 11;
@@ -256,7 +257,7 @@
             // textBox_Duration
             // 
             this.textBox_Duration.Location = new System.Drawing.Point(187, 94);
-            this.textBox_Duration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Duration.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Duration.Name = "textBox_Duration";
             this.textBox_Duration.Size = new System.Drawing.Size(91, 20);
             this.textBox_Duration.TabIndex = 10;
@@ -265,7 +266,7 @@
             // textBox_Name
             // 
             this.textBox_Name.Location = new System.Drawing.Point(187, 53);
-            this.textBox_Name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Name.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(91, 20);
             this.textBox_Name.TabIndex = 9;
@@ -274,7 +275,7 @@
             // 
             this.listBox_Movies.FormattingEnabled = true;
             this.listBox_Movies.Location = new System.Drawing.Point(39, 38);
-            this.listBox_Movies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox_Movies.Margin = new System.Windows.Forms.Padding(2);
             this.listBox_Movies.Name = "listBox_Movies";
             this.listBox_Movies.Size = new System.Drawing.Size(105, 160);
             this.listBox_Movies.TabIndex = 8;
@@ -298,9 +299,9 @@
             this.groupBox_Rectangles.Controls.Add(this.listBox_Rectangles);
             this.groupBox_Rectangles.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox_Rectangles.Location = new System.Drawing.Point(2, 2);
-            this.groupBox_Rectangles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_Rectangles.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_Rectangles.Name = "groupBox_Rectangles";
-            this.groupBox_Rectangles.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_Rectangles.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox_Rectangles.Size = new System.Drawing.Size(359, 389);
             this.groupBox_Rectangles.TabIndex = 0;
             this.groupBox_Rectangles.TabStop = false;
@@ -339,7 +340,7 @@
             // textBox_id
             // 
             this.textBox_id.Location = new System.Drawing.Point(179, 265);
-            this.textBox_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_id.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_id.Name = "textBox_id";
             this.textBox_id.ReadOnly = true;
             this.textBox_id.Size = new System.Drawing.Size(91, 20);
@@ -348,7 +349,7 @@
             // textBox_center_y
             // 
             this.textBox_center_y.Location = new System.Drawing.Point(179, 221);
-            this.textBox_center_y.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_center_y.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_center_y.Name = "textBox_center_y";
             this.textBox_center_y.ReadOnly = true;
             this.textBox_center_y.Size = new System.Drawing.Size(91, 20);
@@ -357,7 +358,7 @@
             // textBox_center_x
             // 
             this.textBox_center_x.Location = new System.Drawing.Point(179, 179);
-            this.textBox_center_x.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_center_x.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_center_x.Name = "textBox_center_x";
             this.textBox_center_x.ReadOnly = true;
             this.textBox_center_x.Size = new System.Drawing.Size(91, 20);
@@ -386,7 +387,7 @@
             // button_Find
             // 
             this.button_Find.Location = new System.Drawing.Point(29, 218);
-            this.button_Find.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Find.Margin = new System.Windows.Forms.Padding(2);
             this.button_Find.Name = "button_Find";
             this.button_Find.Size = new System.Drawing.Size(67, 20);
             this.button_Find.TabIndex = 5;
@@ -407,7 +408,7 @@
             // textBox_Color
             // 
             this.textBox_Color.Location = new System.Drawing.Point(179, 135);
-            this.textBox_Color.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Color.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Color.Name = "textBox_Color";
             this.textBox_Color.Size = new System.Drawing.Size(91, 20);
             this.textBox_Color.TabIndex = 3;
@@ -416,7 +417,7 @@
             // textBox_Width
             // 
             this.textBox_Width.Location = new System.Drawing.Point(179, 94);
-            this.textBox_Width.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Width.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Width.Name = "textBox_Width";
             this.textBox_Width.Size = new System.Drawing.Size(91, 20);
             this.textBox_Width.TabIndex = 2;
@@ -425,7 +426,7 @@
             // textBox_Length
             // 
             this.textBox_Length.Location = new System.Drawing.Point(179, 53);
-            this.textBox_Length.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Length.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Length.Name = "textBox_Length";
             this.textBox_Length.Size = new System.Drawing.Size(91, 20);
             this.textBox_Length.TabIndex = 1;
@@ -435,7 +436,7 @@
             // 
             this.listBox_Rectangles.FormattingEnabled = true;
             this.listBox_Rectangles.Location = new System.Drawing.Point(29, 38);
-            this.listBox_Rectangles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox_Rectangles.Margin = new System.Windows.Forms.Padding(2);
             this.listBox_Rectangles.Name = "listBox_Rectangles";
             this.listBox_Rectangles.Size = new System.Drawing.Size(105, 160);
             this.listBox_Rectangles.TabIndex = 0;
@@ -445,9 +446,9 @@
             // 
             this.tabPage_Rectangles.Controls.Add(this.rectanglesCollisionControl1);
             this.tabPage_Rectangles.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Rectangles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Rectangles.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Rectangles.Name = "tabPage_Rectangles";
-            this.tabPage_Rectangles.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Rectangles.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage_Rectangles.Size = new System.Drawing.Size(733, 393);
             this.tabPage_Rectangles.TabIndex = 2;
             this.tabPage_Rectangles.Text = "Rectangles";
@@ -457,7 +458,7 @@
             // rectanglesCollisionControl1
             // 
             this.rectanglesCollisionControl1.Location = new System.Drawing.Point(2, 4);
-            this.rectanglesCollisionControl1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.rectanglesCollisionControl1.Margin = new System.Windows.Forms.Padding(1);
             this.rectanglesCollisionControl1.Name = "rectanglesCollisionControl1";
             this.rectanglesCollisionControl1.Size = new System.Drawing.Size(735, 390);
             this.rectanglesCollisionControl1.TabIndex = 0;
@@ -469,7 +470,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 419);
             this.Controls.Add(this.tabControl_Enums);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);

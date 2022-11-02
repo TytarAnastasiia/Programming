@@ -10,8 +10,18 @@ namespace Programming.Model
     {
         private string name;
         private string surname;
-        private string number; // >6
-        private string email; // @, .
+        public string Number { set; get; } 
+        public string Email { set; get; }
+
+        public Contact() { }
+
+        public Contact(string name, string surname, string number, string email)
+        {
+            Name = name;
+            Surname = surname;
+            Number = number;
+            Email = email;
+        }
 
         private bool AssertStringContainsOnlyLetters(string value, string exeptionParametr)
         {
@@ -49,5 +59,6 @@ namespace Programming.Model
             }
             get { return surname; }
         }
+        
     }
 }
