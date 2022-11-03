@@ -41,7 +41,8 @@ namespace Programming
                 _rectangles[i] = new MyRectangle(rand.NextDouble() * 10,
                     rand.NextDouble() * 10, randColor.ToString(),
                 new Point2D(rand.Next(0, 1000), rand.Next(0, 1000)));
-            }  
+            }
+            _currentRectangle = _rectangles[0];
             moviesNames = new string[] {"StarTrek", "Mission Impossible", "Ice Age", "The Matrix", "The Man From U.N.C.L.E."};
             _movies = new Movie[moviesNames.Length];
             Genre randGenre;
@@ -65,6 +66,7 @@ namespace Programming
             {
                 listBox_Rectangles.Items.Add("Rectangle " + (i+1));
             }
+            listBox_Rectangles.SelectedIndex = 0;
             listBox_Movies.Items.AddRange(moviesNames);
         }
 
