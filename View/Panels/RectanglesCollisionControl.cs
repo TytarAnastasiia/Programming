@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using Programming.Model;
 using Programming.Model.Geometry;
@@ -153,12 +154,13 @@ namespace Programming.View.Panels
             int index = listBox_rectanglesToShow.SelectedIndex;
             if (index != -1)
             {
-                _myRectanglesList.Remove(_currentMyRectangle);
+                _myRectanglesList.RemoveAt(index);
+                _rectanglePanels.RemoveAt(index);
                 listBox_rectanglesToShow.Items.RemoveAt(index);
                 panel_canvas.Controls.RemoveAt(index);
-                FindCollisions();
-                ClearRectangleInfo();
                 _currentMyRectangle = null;
+                ClearRectangleInfo();
+                FindCollisions();
                 //panel_canvas.Controls.RemoveAt(listBox_rectanglesToShow.SelectedIndex);
             }
         }
@@ -179,7 +181,7 @@ namespace Programming.View.Panels
 
         private string GetRectangleTitle(MyRectangle rectangle)
         {
-            return rectangle.Id + ": " + rectangle.MyRectangleToString();
+            return rectangle.Id + ": " + rectangle.MyRectangleToString()+" - "+rectangle.Color;
         }
         private void DrawRectangle(int index)
         {
@@ -240,23 +242,28 @@ namespace Programming.View.Panels
             {
                 _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
                 _myRectanglesList[i].Color = "Green";
+                listBox_rectanglesToShow.Items[i]
+                       = GetRectangleTitle(_myRectanglesList[i]);
             }
-                for (int i = 0; i < _myRectanglesList.Count; i++)
+            for (int i = 0; i < _myRectanglesList.Count; i++)
+            {
+                for (int j = i+1; j < _myRectanglesList.Count; j++)
                 {
-                    for (int j = i+1; j < _myRectanglesList.Count; j++)
+                    if (CollisionManager.IsCollision(_myRectanglesList[i], _myRectanglesList[j]))
                     {
-                        if (i != j)
-                        {
-                            if (CollisionManager.IsCollision(_myRectanglesList[i], _myRectanglesList[j]))
-                            {
-                                _myRectanglesList[i].Color = "Red";
-                                _myRectanglesList[j].Color = "Red";
-                                _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
-                                _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
-                            }
-                        }
+                        _myRectanglesList[i].Color = "Red";
+                        _myRectanglesList[j].Color = "Red";
+                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        listBox_rectanglesToShow.Items[i]
+                               = GetRectangleTitle(_myRectanglesList[i]);
+                        listBox_rectanglesToShow.Items[j]
+                               = GetRectangleTitle(_myRectanglesList[j]);
                     }
                 }
+            }
+            listBox_rectanglesToShow.Refresh();
+            panel_canvas.Refresh();
         }
 
         private void panel_canvas_Paint_1(object sender, PaintEventArgs e)

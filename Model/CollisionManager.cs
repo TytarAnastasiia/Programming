@@ -13,8 +13,8 @@ namespace Programming.Model
         {
             double dx = Math.Abs(rectangle1.Centre.X - rectangle2.Centre.X);
             double dy = Math.Abs(rectangle1.Centre.Y - rectangle2.Centre.Y);
-            double widthDifference = 0.5 * (rectangle1.Width + rectangle2.Width);
-            double heightDifference = 0.5 * (rectangle1.Length + rectangle2.Length);
+            double widthDifference = (rectangle1.Width + rectangle2.Width) / 2;
+            double heightDifference = (rectangle1.Length + rectangle2.Length) / 2;
             if (dx < widthDifference && dy < heightDifference )
             {
                 //MessageBox.Show("collision");
