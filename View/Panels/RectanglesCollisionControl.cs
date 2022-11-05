@@ -262,8 +262,6 @@ namespace Programming.View.Panels
                     }
                 }
             }
-            listBox_rectanglesToShow.Refresh();
-            panel_canvas.Refresh();
         }
 
         private void panel_canvas_Paint_1(object sender, PaintEventArgs e)
