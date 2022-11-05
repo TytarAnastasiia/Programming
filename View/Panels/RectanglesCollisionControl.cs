@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Programming.Model;
 using Programming.Model.Geometry;
@@ -52,6 +46,8 @@ namespace Programming.View.Panels
                         MessageBox.Show(e1.Message);
                         textBox_rectY.BackColor = AppColors.NotValidColor;
                     }
+                    listBox_rectanglesToShow.Items[index]
+                       = GetRectangleTitle(_currentMyRectangle);
                 }
             }
         }
@@ -162,7 +158,7 @@ namespace Programming.View.Panels
                 panel_canvas.Controls.RemoveAt(index);
                 FindCollisions();
                 ClearRectangleInfo();
-
+                _currentMyRectangle = null;
                 //panel_canvas.Controls.RemoveAt(listBox_rectanglesToShow.SelectedIndex);
             }
         }
