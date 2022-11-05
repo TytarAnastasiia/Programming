@@ -23,12 +23,12 @@ namespace Programming.Model
         public static bool AssertValueInRange(int value, int min, int max, string exeptionParametr)
         {
             if (value < min || value > max)
-                throw new ArgumentException(exeptionParametr + " выходит за рамки допустимых значений!(" + min + "-" + max + ")");
+                throw new ArgumentException(exeptionParametr + " " + value + " выходит за рамки допустимых значений!(" + min + "-" + max + ")");
             return true;
         }
         public static bool AssertValueInRange(double value, double min, double max, string exeptionParametr)
         {
-            if (value <= min || value >= max)
+            if (value < min || value > max)
                 throw new ArgumentException(exeptionParametr + " выходит за рамки допустимых значений!(" + min + "-" + max + ")");
             return true;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Programming.Model
 {
@@ -34,7 +35,35 @@ namespace Programming.Model
         {
             get; set;
         }
-        
+        public Point2D VertexA
+        {
+            get
+            {
+                return new Point2D(Centre.X - (int)Width/2, Centre.Y - (int)Length/2);
+            }
+        }
+        public Point2D VertexB
+        {
+            get
+            {
+                return new Point2D(Centre.X + (int)Width/2, Centre.Y - (int)Length/2);
+            }
+        }
+        public Point2D VertexC
+        {
+            get
+            {
+                return new Point2D(Centre.X + (int)Width/2, Centre.Y + (int)Length/2);
+            }
+        }
+        public Point2D VertexD
+        {
+            get
+            {
+                return new Point2D(Centre.X - (int)Width/2, Centre.Y + (int)Length/2);
+            }
+        }
+
         public double Length 
         { 
             get { return length; } 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,13 +37,15 @@ namespace Programming.View.Panels
                     try
                     {
                         int z = _currentMyRectangle.Centre.X;
+                        int y = Convert.ToInt32(textBox_rectY.Text);
+                        int min = (int)_currentMyRectangle.Length / 2;
+                        int max = panel_canvas.Height - min;
+                        Validator.AssertValueInRange(y, min, max, "Y центра");
                         _currentMyRectangle.Centre = new Point2D
                             (z, Convert.ToInt32(textBox_rectY.Text));
                         listBox_rectanglesToShow.Items[index]
-                            = _currentMyRectangle.Id -5 + ": " + _currentMyRectangle.MyRectangleToString();
-                        _rectanglePanels[index].Location
-                            = new Point(z, _currentMyRectangle.Centre.Y - (int)(_currentMyRectangle.Length / 2));
-                        FindCollisions();
+                            = GetRectangleTitle(_currentMyRectangle);
+                        DrawRectangle(index);
                     }
                     catch (Exception e1)
                     {
@@ -58,24 +61,78 @@ namespace Programming.View.Panels
             if (_currentMyRectangle != null)
             {
                 textBox_rectX.BackColor = Color.White;
+                int index = listBox_rectanglesToShow.SelectedIndex;
                 if (textBox_rectX.Text != "" && textBox_rectX.Text != null)
                 {
                     try
                     {
                         int y = _currentMyRectangle.Centre.Y;
-                        _currentMyRectangle.Centre = new Point2D
-                            (Convert.ToInt32(textBox_rectX.Text), y);
-                        listBox_rectanglesToShow.Items[listBox_rectanglesToShow.SelectedIndex]
-                            = _currentMyRectangle.Id - 5 + ": " + _currentMyRectangle.MyRectangleToString();
-                        _rectanglePanels[listBox_rectanglesToShow.SelectedIndex].Location
-                            = new Point(_currentMyRectangle.Centre.X - (int)(_currentMyRectangle.Width/2), y);
-                        FindCollisions();
+                        int x = Convert.ToInt32(textBox_rectX.Text);
+                        int min = (int)_currentMyRectangle.Width / 2;
+                        int max = panel_canvas.Width - min;
+                        Validator.AssertValueInRange(x, min, max, "X центра");
+                        _currentMyRectangle.Centre = new Point2D(x, y);
+                        DrawRectangle(index);
                     }
                     catch (Exception e1)
                     {
                         MessageBox.Show(e1.Message);
                         textBox_rectX.BackColor = AppColors.NotValidColor;
                     }
+                    listBox_rectanglesToShow.Items[index]
+                        = GetRectangleTitle(_currentMyRectangle);
+                }
+            }
+        }
+        private void textBox_rectWidth_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentMyRectangle != null)
+            {
+                textBox_rectWidth.BackColor = Color.White;
+                int index = listBox_rectanglesToShow.SelectedIndex;
+                if (textBox_rectWidth.Text != "" && textBox_rectWidth.Text != null)
+                {
+                    try
+                    {
+                        double w = Convert.ToDouble(textBox_rectWidth.Text);
+                        double max = Math.Min(_currentMyRectangle.Centre.X, panel_canvas.Width - _currentMyRectangle.Centre.X)*2;
+                        Validator.AssertValueInRange(w, 1.0d, max, "Ширина прямоугольника");
+                        _currentMyRectangle.Width = w;
+                        DrawRectangle(index);
+                    }
+                    catch (Exception e1)
+                    {
+                        MessageBox.Show(e1.Message);
+                        textBox_rectWidth.BackColor = AppColors.NotValidColor;
+                    }
+                    listBox_rectanglesToShow.Items[index]
+                        = GetRectangleTitle(_currentMyRectangle);
+                }
+            }
+        }
+        private void textBox_rectHeight_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentMyRectangle != null)
+            {
+                textBox_rectHeight.BackColor = Color.White;
+                int index = listBox_rectanglesToShow.SelectedIndex;
+                if (textBox_rectHeight.Text != "" && textBox_rectHeight.Text != null)
+                {
+                    try
+                    {
+                        double h = Convert.ToDouble(textBox_rectHeight.Text);
+                        double max = Math.Min(_currentMyRectangle.Centre.Y, panel_canvas.Height-_currentMyRectangle.Centre.Y)*2;
+                        Validator.AssertValueInRange(h, 1.0d, max, "Высота прямоугольника");
+                        _currentMyRectangle.Length = h;
+                        DrawRectangle(index);
+                    }
+                    catch (Exception e1)
+                    {
+                        MessageBox.Show(e1.Message);
+                        textBox_rectHeight.BackColor = AppColors.NotValidColor;
+                    }
+                    listBox_rectanglesToShow.Items[index]
+                        = GetRectangleTitle(_currentMyRectangle);
                 }
             }
         }
@@ -101,7 +158,7 @@ namespace Programming.View.Panels
             if (index != -1)
             {
                 _myRectanglesList.Remove(_currentMyRectangle);
-                listBox_rectanglesToShow.Items.Remove(_currentMyRectangle.Id-5 + ": " + _currentMyRectangle.MyRectangleToString());
+                listBox_rectanglesToShow.Items.RemoveAt(index);
                 panel_canvas.Controls.RemoveAt(index);
                 FindCollisions();
                 ClearRectangleInfo();
@@ -114,16 +171,29 @@ namespace Programming.View.Panels
         {
             MyRectangle newRect = RectangleFactory.Randomize(panel_canvas.Width, panel_canvas.Height);
             _myRectanglesList.Add(newRect);
-            listBox_rectanglesToShow.Items.Add(newRect.Id - 5 + ": " + newRect.MyRectangleToString());
             Panel newPanel = new Panel();
-            newPanel.BackColor = Color.FromArgb(127, 127, 255, 127);
-            newPanel.Width = (int)newRect.Width;
-            newPanel.Height = (int)newRect.Length;
-            newPanel.Location = new System.Drawing.Point(newRect.Centre.X - (int)(newRect.Width / 2),
-                newRect.Centre.Y - (int)(newRect.Length / 2));
             _rectanglePanels.Add(newPanel);
-            FindCollisions();
             panel_canvas.Controls.Add(newPanel);
+
+            _currentMyRectangle = newRect;
+            int i = listBox_rectanglesToShow.Items.Add(GetRectangleTitle(_currentMyRectangle));
+            listBox_rectanglesToShow.SelectedIndex = i;
+            DrawRectangle(i);
+        }
+
+        private string GetRectangleTitle(MyRectangle rectangle)
+        {
+            return rectangle.Id + ": " + rectangle.MyRectangleToString();
+        }
+        private void DrawRectangle(int index)
+        {
+            MyRectangle r = _myRectanglesList[index];
+            Panel p = _rectanglePanels[index];
+
+            p.Width = (int)r.Width;
+            p.Height = (int)r.Length;
+            p.Location = new System.Drawing.Point(r.VertexA.X, r.VertexA.Y);
+            FindCollisions();
         }
 
         private void listBox_rectanglesToShow_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,75 +215,9 @@ namespace Programming.View.Panels
 
         }
 
-        private void textBox_rectHeight_TextChanged(object sender, EventArgs e)
-        {
+        
 
-        }
-
-        private void label_rectWidth_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_rectWidth_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_rectY_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_rectY_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_rectX_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_rectX_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_rectId_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_rectId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_rectHeight_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_RemoveRectangle_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_AddRectangle_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_rectangles_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void UpdateRectangleInfo()
         {
@@ -235,7 +239,7 @@ namespace Programming.View.Panels
             textBox_rectHeight.Text = "";
         }
         private void FindCollisions()
-            {
+        {
             for (int i = 0; i < _myRectanglesList.Count; i++)
             {
                 _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
@@ -257,7 +261,7 @@ namespace Programming.View.Panels
                         }
                     }
                 }
-            }
+        }
 
         private void panel_canvas_Paint_1(object sender, PaintEventArgs e)
         {
