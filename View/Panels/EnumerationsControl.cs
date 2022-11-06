@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Programming.Model;
 
@@ -37,7 +30,6 @@ namespace Programming.View.Panels
                         foreach (var value in Enum.GetValues(typeof(Colour)))
                         {
                             ValuesListBox.Items.Add((Colour)value);
-                            //MessageBox.Show("Color");
                         }
 
                         break;
