@@ -73,14 +73,5 @@ namespace Programming.View.Panels
             }
         }
 
-        private void textBox_SelectedValue_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox_Enumeration_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

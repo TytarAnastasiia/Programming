@@ -11,22 +11,22 @@ namespace Programming.View
     {
         public static Color StandartColor
         {
-            set; get;
+            get;
         }
     = Color.White;
         public static Color AutumnColor
         {
-            set; get;
+            get;
         }
     = Color.Orange;
         public static Color SpringColor
         {
-            set; get;
+            get;
         }
     = Color.Green;
         public static Color NotValidColor
         {
-            set; get;
+            get;
         }
     = Color.LightPink;
     }
