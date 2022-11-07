@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programming", "Programming.csproj", "{8D571E36-32C9-4B7C-BBB4-8B6833BFA700}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoSysFlight", "InfoSysFlight\InfoSysFlight.csproj", "{8536B126-AD61-4B59-B5F2-9D272878A410}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoSysFlight", "InfoSysFlight.csproj", "{8536B126-AD61-4B59-B5F2-9D272878A410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8D571E36-32C9-4B7C-BBB4-8B6833BFA700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D571E36-32C9-4B7C-BBB4-8B6833BFA700}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D571E36-32C9-4B7C-BBB4-8B6833BFA700}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D571E36-32C9-4B7C-BBB4-8B6833BFA700}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8536B126-AD61-4B59-B5F2-9D272878A410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8536B126-AD61-4B59-B5F2-9D272878A410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8536B126-AD61-4B59-B5F2-9D272878A410}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4CE9B3B2-5794-4272-8930-828F6A2729C2}
+		SolutionGuid = {89985B38-1F97-4295-BF24-A67FEF75BC40}
 	EndGlobalSection
 EndGlobal
