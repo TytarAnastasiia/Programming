@@ -11,7 +11,7 @@ namespace InfoSysFlight
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            flightControl1.WriteFlightsToFile("flight.txt");
+            flightControl1.WriteFlightsToFile();
         }
     }
 }

@@ -35,18 +35,20 @@
             // 
             this.flightControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flightControl1.Location = new System.Drawing.Point(0, 0);
+            this.flightControl1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.flightControl1.Name = "flightControl1";
-            this.flightControl1.Size = new System.Drawing.Size(800, 450);
+            this.flightControl1.Size = new System.Drawing.Size(533, 292);
             this.flightControl1.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.flightControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "InfoSysFlight";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
 

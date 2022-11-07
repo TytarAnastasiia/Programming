@@ -111,7 +111,6 @@
             this.label_flightType.Size = new System.Drawing.Size(86, 20);
             this.label_flightType.TabIndex = 6;
             this.label_flightType.Text = "Flight type:";
-            this.label_flightType.Click += new System.EventHandler(this.label3_Click);
             // 
             // label_flightDuration
             // 
@@ -139,7 +138,6 @@
             this.label_destinationPoint.Size = new System.Drawing.Size(133, 20);
             this.label_destinationPoint.TabIndex = 3;
             this.label_destinationPoint.Text = "Destination point:";
-            this.label_destinationPoint.Click += new System.EventHandler(this.label_destinationPoint_Click);
             // 
             // label_departurePoint
             // 
@@ -149,7 +147,6 @@
             this.label_departurePoint.Size = new System.Drawing.Size(124, 20);
             this.label_departurePoint.TabIndex = 2;
             this.label_departurePoint.Text = "Departure point:";
-            this.label_departurePoint.Click += new System.EventHandler(this.label_departurePoint_Click);
             // 
             // textBox_destinationPoint
             // 
