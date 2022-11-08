@@ -21,7 +21,6 @@ namespace InfoSysFlight.View
         Flight _currentFlight;
         bool isEditClicked;
         bool isAddClicked;
-        //int currentIndex;
         FlightType ftype;
 
         public FlightControl()
@@ -130,7 +129,6 @@ namespace InfoSysFlight.View
             _flightList = new List<Flight>();
             isEditClicked = false;
             isAddClicked = false;
-            //currentIndex = -1;
             if (File.Exists(FILE_NAME))
             {
                 ReadFlightsFromFile(FILE_NAME);
@@ -154,25 +152,19 @@ namespace InfoSysFlight.View
 
         private void textBox_departurePoint_TextChanged(object sender, EventArgs e)
         {
-            if (_currentFlight != null)// && (isAddClicked || isEditClicked)
+            if (_currentFlight != null)
             {
                 textBox_departurePoint.BackColor = AppColors.StandartColor;
                 try
                 {
-                    if (Validator.AssertOnValidText(textBox_departurePoint.Text) &&
-                        Validator.AssertOnValidLength(textBox_departurePoint.Text))
-                    {
-                        /*_currentFlight.DeparturePoint = textBox_departurePoint.Text;
-                        //int index = SelectedOrCreatedFlightIndex();////////
-                        listBox_flights.Items[listBox_flights.SelectedIndex] = _currentFlight.FlightToString();*/
-
-                    }
+                    Validator.AssertOnValidText(textBox_departurePoint.Text);
+                    Validator.AssertOnValidLength(textBox_departurePoint.Text);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("ERROR! '" + ex.ToString() + "' " + ex.StackTrace);
-                    MessageBox.Show(ex.Message);
                     textBox_departurePoint.BackColor = AppColors.ColorOfError;
+                    ToolTip tt = new ToolTip();
+                    tt.Show(ex.Message, textBox_departurePoint, 3000); 
                 }
             }
 
@@ -180,25 +172,19 @@ namespace InfoSysFlight.View
 
         private void textBox_destinationPoint_TextChanged(object sender, EventArgs e)
         {
-            if (_currentFlight != null) //&& (isAddClicked || isEditClicked))
+            if (_currentFlight != null)
             {
                 textBox_destinationPoint.BackColor = AppColors.StandartColor;
                 try
                 {
-                    if (Validator.AssertOnValidText(textBox_destinationPoint.Text) &&
-                        Validator.AssertOnValidLength(textBox_destinationPoint.Text))
-                    {
-                        /*_currentFlight.DestinationPoint = textBox_destinationPoint.Text;
-                        //int index = SelectedOrCreatedFlightIndex();
-                        listBox_flights.Items[listBox_flights.SelectedIndex] = _currentFlight.FlightToString();*/
-
-                    }
+                    Validator.AssertOnValidText(textBox_destinationPoint.Text);
+                    Validator.AssertOnValidLength(textBox_destinationPoint.Text);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("ERROR! '" + ex.ToString() + "' " + ex.StackTrace);
-                    MessageBox.Show(ex.Message);
                     textBox_destinationPoint.BackColor = AppColors.ColorOfError;
+                    ToolTip tt = new ToolTip();
+                    tt.Show(ex.Message, textBox_departurePoint, 3000);
                 }
             }
         }
@@ -210,19 +196,13 @@ namespace InfoSysFlight.View
                 textBox_flightDuration.BackColor = AppColors.StandartColor;
                 try
                 {
-                    if (Validator.AssertOnIsNumber(textBox_flightDuration.Text))
-                    {
-                        /*_currentFlight.FlightDuration = Convert.ToInt32(textBox_flightDuration.Text);
-                        //int index = SelectedOrCreatedFlightIndex();
-                        listBox_flights.Items[listBox_flights.SelectedIndex] = _currentFlight.FlightToString();*/
-
-                    }
+                    Validator.AssertOnIsNumber(textBox_flightDuration.Text);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("ERROR! '" + ex.ToString() + "' " + ex.StackTrace);
-                    MessageBox.Show(ex.Message);
                     textBox_flightDuration.BackColor = AppColors.ColorOfError;
+                    ToolTip tt = new ToolTip();
+                    tt.Show(ex.Message, textBox_departurePoint, 3000);
                 }
             }
         }
@@ -233,18 +213,13 @@ namespace InfoSysFlight.View
             {
                 if (comboBox_flightType.SelectedIndex != -1)
                 {
-                    //if (Enum.TryParse((string)comboBox_flightType.SelectedValue, out ftype))
-                        //_currentFlight.TypeOfFlight = ftype;
                     ftype = (FlightType)comboBox_flightType.SelectedItem;
-                    //MessageBox.Show(ftype.ToString());
                 }
             }
         }
 
         private void listBox_flights_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            //currentIndex = listBox_flights.SelectedIndex;
             if (listBox_flights.SelectedIndex != -1)
             {
                 _currentFlight = _flightList[listBox_flights.SelectedIndex];
@@ -252,30 +227,18 @@ namespace InfoSysFlight.View
             }
             else
             {
-                //if (listBox_flights.Items.Count == 0)
                     _currentFlight = null;
-                //if (listBox_flights.SelectedItem == null)
-                //CleanControls();
             }
-            //MessageBox.Show("index");
 
         }
 
         private void dateTimePicker_departureTime_ValueChanged(object sender, EventArgs e)
         {
-            //if (_currentFlight == null)
-             //   _currentFlight = new Flight();
-
             if (_currentFlight != null)
             {
                 try
                 {
-                    if (Validator.AssertOnValidDate(dateTimePicker_departureTime.Value))
-                    {
-                        /*_currentFlight.DepartureTime = dateTimePicker_departureTime.Value;
-                        //int index = SelectedOrCreatedFlightIndex();
-                        listBox_flights.Items[listBox_flights.SelectedIndex] = _currentFlight.FlightToString();*/
-                    }
+                    Validator.AssertOnValidDate(dateTimePicker_departureTime.Value);
                 }
                 catch (Exception ex)
                 {
@@ -290,7 +253,6 @@ namespace InfoSysFlight.View
             textBox_destinationPoint.Text = "";
             textBox_flightDuration.Text = "";
             comboBox_flightType.SelectedIndex = -1;
-            //MessageBox.Show("cleaned");
         }
         private void ShowFlightInfo ()
         {
@@ -317,7 +279,6 @@ namespace InfoSysFlight.View
                 _flightList.RemoveAt(flightIndex);
                 listBox_flights.Items.RemoveAt(flightIndex);
                 listBox_flights.SelectedIndex = -1;
-                MessageBox.Show("" + _flightList.Count);
                 CleanControls();
             }
             else
@@ -341,21 +302,19 @@ namespace InfoSysFlight.View
             {
                 if (_currentFlight != null)
                 {
-                    //MessageBox.Show(ftype.ToString() + "tf =" + _currentFlight.TypeOfFlight);
-                    _currentFlight.DeparturePoint = textBox_departurePoint.Text;
-                    //int index = SelectedOrCreatedFlightIndex();////////
-
-                    _currentFlight.DestinationPoint = textBox_destinationPoint.Text;
-                    //int index = SelectedOrCreatedFlightIndex();
-
-                    _currentFlight.DepartureTime = dateTimePicker_departureTime.Value;
-                    //int index = SelectedOrCreatedFlightIndex();
-
-                    _currentFlight.FlightDuration = Convert.ToInt32(textBox_flightDuration.Text);
-                    //int index = SelectedOrCreatedFlightIndex();
-                    _currentFlight.TypeOfFlight = ftype;
-                    listBox_flights.Items[listBox_flights.SelectedIndex] = _currentFlight.FlightToString();
-
+                    try
+                    {
+                        _currentFlight.DeparturePoint = textBox_departurePoint.Text;
+                        _currentFlight.DestinationPoint = textBox_destinationPoint.Text;
+                        _currentFlight.DepartureTime = dateTimePicker_departureTime.Value;
+                        _currentFlight.FlightDuration = Convert.ToInt32(textBox_flightDuration.Text);
+                        _currentFlight.TypeOfFlight = ftype;
+                        SortFlight();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Невозможно сохранить с неправильным значением. " + ex.Message);
+                    }
                 }
             }
             isEditClicked = false;
@@ -372,6 +331,14 @@ namespace InfoSysFlight.View
             e.Handled = true;//блокирует ввод символов вне режима редакции и добавления
         }
 
- 
+        private void SortFlight()
+        {
+            _flightList = _flightList.OrderBy(f => f.DepartureTime).ToList();
+            listBox_flights.Items.Clear();
+            for(int i = 0; i < _flightList.Count; i++)
+            {
+                listBox_flights.Items.Add(_flightList[i].FlightToString());
+            }
+        }
     }
 }

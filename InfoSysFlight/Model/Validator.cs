@@ -34,7 +34,7 @@ namespace InfoSysFlight.Model
             {
                 return true;
             }
-            throw new ArgumentException("Превышено допустимое количество символов");
+            throw new ArgumentException("Превышено допустимое количество символов (" + minLength + "-" + maxLength + ")");
         }
         public static bool AssertOnInRange(int min, int max, int number)
         {
@@ -47,11 +47,13 @@ namespace InfoSysFlight.Model
         }
         public static bool AssertOnValidDate(DateTime chosenDate, int maxNumberOfYear = 1)
         {
-            if ((chosenDate >= DateTime.Now) && (DateTime.Now.Year - chosenDate.Year) <= 1)
+            DateTime minTime = DateTime.Now;
+            DateTime maxTime = minTime.AddYears(maxNumberOfYear);
+            if ((chosenDate >= minTime) && (chosenDate <= maxTime))
             {
                 return true;
             }
-            else throw new ArgumentException("Выходит за допустимый диапазон дат");
+            else throw new ArgumentException("Выходит за допустимый диапазон дат от " + minTime + " до " + maxTime);
         }
         public static bool AssertOnIsNumber(string text)
         {
