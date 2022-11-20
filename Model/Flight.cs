@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
-    class Flight
+    public class Flight
     {
         string destinationPoint;
+
         string departurePoint;
+
         int timeInMinutes;
     }
 }

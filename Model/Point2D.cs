@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
-    class Point2D
+    public class Point2D
     {
         private int x;
+
         private int y;
+
         public Point2D (int x, int y)
         {
             X = x;
+
             Y = y;
         }
         
@@ -28,6 +31,7 @@ namespace Programming.Model
                 x = value;
             } 
         }
+        
         public int Y
         {
             get

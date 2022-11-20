@@ -10,13 +10,17 @@ namespace Programming.View.Panels
     public partial class RectanglesCollisionControl : UserControl
     {
         private MyRectangle _currentMyRectangle;
+
         private List<Panel> _rectanglePanels;
+
         private List<MyRectangle> _myRectanglesList;
 
         public RectanglesCollisionControl()
         {
             InitializeComponent();
+
             _myRectanglesList = new List<MyRectangle>();
+
             _rectanglePanels = new List<Panel>();
         }
 
@@ -80,6 +84,7 @@ namespace Programming.View.Panels
                 }
             }
         }
+        
         private void textBox_rectWidth_TextChanged(object sender, EventArgs e)
         {
             if (_currentMyRectangle != null)
@@ -133,21 +138,6 @@ namespace Programming.View.Panels
             }
         }
 
-        private void textBox_rectX_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void textBox_rectX_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button_RemoveRectangle_Click(object sender, EventArgs e)
         {
             int index = listBox_rectanglesToShow.SelectedIndex;
@@ -160,7 +150,6 @@ namespace Programming.View.Panels
                 _currentMyRectangle = null;
                 ClearRectangleInfo();
                 FindCollisions();
-                //panel_canvas.Controls.RemoveAt(listBox_rectanglesToShow.SelectedIndex);
             }
         }
 
@@ -182,6 +171,7 @@ namespace Programming.View.Panels
         {
             return rectangle.Id + ": " + rectangle.MyRectangleToString()+" - "+rectangle.Color;
         }
+        
         private void DrawRectangle(int index)
         {
             MyRectangle r = _myRectanglesList[index];
@@ -200,21 +190,7 @@ namespace Programming.View.Panels
                 _currentMyRectangle = _myRectanglesList[listBox_rectanglesToShow.SelectedIndex];
                 UpdateRectangleInfo();
             }
-            else
-            {
-                //ClearRectangleInfo();
-                //MessageBox.Show("index");
-            }
         }
-
-        private void panel_canvas_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-
-        
 
         private void UpdateRectangleInfo()
         {
@@ -227,6 +203,7 @@ namespace Programming.View.Panels
                 textBox_rectHeight.Text = _currentMyRectangle.Length.ToString();
             }
         }
+        
         private void ClearRectangleInfo()
         {
             textBox_rectId.Text = "";
@@ -235,6 +212,7 @@ namespace Programming.View.Panels
             textBox_rectWidth.Text = "";
             textBox_rectHeight.Text = "";
         }
+        
         private void FindCollisions()
         {
             for (int i = 0; i < _myRectanglesList.Count; i++)
@@ -261,11 +239,6 @@ namespace Programming.View.Panels
                     }
                 }
             }
-        }
-
-        private void panel_canvas_Paint_1(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

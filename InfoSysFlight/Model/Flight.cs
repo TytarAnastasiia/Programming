@@ -6,28 +6,32 @@ namespace InfoSysFlight.Model
     class Flight
     {
         private string departurePoint;
+
         private string destinationPoint;
+
         private DateTime departureTime;
-        private int flightDuration; //в минутах (0-1000)
+
+        private int flightDuration;
+
         private FlightType typeOfFlight;
 
         public Flight () { } 
-
 
         public Flight(string departurePoint, string destinationPoint, 
             DateTime departureTime, int flightDuration, FlightType typeOfFlight) 
         {
             DeparturePoint = departurePoint;
+
             DestinationPoint = destinationPoint;
+
             DepartureTime = departureTime;
+
             FlightDuration = flightDuration;
+
             TypeOfFlight = typeOfFlight;
         }
         public string DepartureTimeToString ()
         {
-            /*return departureTime.Day + "." + departureTime.Month + "."
-                + departureTime.Year + " " + departureTime.Hour + ":" +
-                departureTime.Minute;*/
             return departureTime.ToString("dd.MM.yyyy HH:mm");
         }
         
@@ -84,7 +88,8 @@ namespace InfoSysFlight.Model
         }
         public string AllInfoToString()
         {
-            return DeparturePoint + ";" + DestinationPoint + ";" + DepartureTimeToString() + ";" + FlightDuration + ";" + TypeOfFlight;
+            return DeparturePoint + ";" + DestinationPoint + ";" 
+                + DepartureTimeToString() + ";" + FlightDuration + ";" + TypeOfFlight;
         }
     
         public bool IsAllCompleted()

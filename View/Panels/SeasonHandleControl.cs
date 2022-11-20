@@ -16,7 +16,6 @@ namespace Programming.View.Panels
         public SeasonHandleControl()
         {
             InitializeComponent();
-
         }
 
         private void button_go_Click(object sender, EventArgs e)
@@ -39,22 +38,12 @@ namespace Programming.View.Panels
             }
         }
 
-        private void comboBox_seasons_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void SeasonHandleControl_Load(object sender, EventArgs e)
         {
             foreach (var value in Enum.GetValues(typeof(Season)))
             {
                 comboBox_seasons.Items.Add(value);
             }
-        }
-
-        private void label_SeasonHandle_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

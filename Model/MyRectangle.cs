@@ -3,27 +3,37 @@
 
 namespace Programming.Model
 {
-    class MyRectangle
+    public class MyRectangle
     {
-        double length;
-        double width;
-        string color;
         private static int _allRectanglesCount = 0;
+
+        double length;
+
+        double width;
+
+        string color;
+
         private int _id;
 
         public MyRectangle(double length, double width, string color, Point2D centre)
         {
             this.Length = length;
+
             this.Width = width;
+
             this.Color = color;
+
             this.Centre = centre;
+
             _allRectanglesCount++;
+
             _id = _allRectanglesCount;
         }
         
         public MyRectangle() 
         { 
             _allRectanglesCount++;
+
             _id = _allRectanglesCount;
         }
 
@@ -31,32 +41,12 @@ namespace Programming.Model
         {
             get; set;
         }
+        
         public Point2D VertexA
         {
             get
             {
                 return new Point2D(Centre.X - (int)Width/2, Centre.Y - (int)Length/2);
-            }
-        }
-        public Point2D VertexB
-        {
-            get
-            {
-                return new Point2D(Centre.X + (int)Width/2, Centre.Y - (int)Length/2);
-            }
-        }
-        public Point2D VertexC
-        {
-            get
-            {
-                return new Point2D(Centre.X + (int)Width/2, Centre.Y + (int)Length/2);
-            }
-        }
-        public Point2D VertexD
-        {
-            get
-            {
-                return new Point2D(Centre.X - (int)Width/2, Centre.Y + (int)Length/2);
             }
         }
 
@@ -69,6 +59,7 @@ namespace Programming.Model
                 length = value;
             }
         }
+        
         public double Width
         {
             get { return width; }
@@ -78,6 +69,7 @@ namespace Programming.Model
                 width = value;
             }
         }
+        
         public string Color
         {
             get { return color; }
@@ -88,14 +80,17 @@ namespace Programming.Model
                 color = value;
             }
         }
+        
         public static int AllRectanglesCount
         {
             get { return _allRectanglesCount; }
         }
+        
         public int Id
         {
             get { return _id; }
         }
+        
         public string MyRectangleToString()
         {
             return "( X = " + Centre.X + "; Y = " + Centre.Y +

@@ -8,39 +8,40 @@ namespace Programming.Model
 {
     internal class Time
     {
-        int hours;   // от 0 до 23
-        int minutes; // от 0 до 60
-        int seconds; // от 0 до 60
+        int hours;
+
+        int minutes;
+
+        int seconds;
 
         public int Hours
         {
+            get { return hours; }
             set
             {
                 Validator.AssertValueInRange(value, 0, 23, "Часы");
                 hours = value;
             }
-            get { return hours; }
-
         }
+
         public int Minutes
         {
+            get { return minutes; }
             set
             {
-                Validator.AssertValueInRange(value, 0, 60, "Минуты");
+                Validator.AssertValueInRange(value, 0, 59, "Минуты");
                 minutes = value;
             }
-            get { return minutes; }
-
         }
+
         public int Seconds
         {
+            get { return seconds; }
             set
             {
-                Validator.AssertValueInRange(value, 0, 23, "Секунды");
+                Validator.AssertValueInRange(value, 0, 59, "Секунды");
                 seconds = value;
             }
-            get { return seconds; }
-
         }
     }
 }

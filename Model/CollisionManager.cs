@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Programming.Model
 {
-    static class CollisionManager
+    public static class CollisionManager
     {
         public static bool IsCollision(MyRectangle rectangle1, MyRectangle rectangle2)
         {
@@ -17,7 +17,6 @@ namespace Programming.Model
             double heightDifference = (rectangle1.Length + rectangle2.Length) / 2;
             if (dx < widthDifference && dy < heightDifference )
             {
-                //MessageBox.Show("collision");
                 return true;
             }
             return false;

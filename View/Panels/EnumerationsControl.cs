@@ -9,7 +9,8 @@ namespace Programming.View.Panels
         public EnumerationsControl()
         {
             InitializeComponent();
-            string[] allEnums = { "Colour", "EducationForm", "Genre", "Manufactures", "Season", "Weekday" };
+            string[] allEnums = 
+                { "Colour", "EducationForm", "Genre", "Manufactures", "Season", "Weekday" };
             EnumsListBox.Items.AddRange(allEnums);
             EnumsListBox.SelectedIndex = 0;
         }
@@ -72,6 +73,5 @@ namespace Programming.View.Panels
                 }
             }
         }
-
     }
 }

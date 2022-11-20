@@ -229,7 +229,6 @@ namespace InfoSysFlight.View
             {
                     _currentFlight = null;
             }
-
         }
 
         private void dateTimePicker_departureTime_ValueChanged(object sender, EventArgs e)

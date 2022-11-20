@@ -204,7 +204,6 @@
             this.panel_canvas.Name = "panel_canvas";
             this.panel_canvas.Size = new System.Drawing.Size(393, 360);
             this.panel_canvas.TabIndex = 4;
-            this.panel_canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_canvas_Paint_1);
             // 
             // button_RemoveRectangle
             // 

@@ -15,42 +15,42 @@ namespace Programming.View.Panels
     public partial class MoviesControl : UserControl
     {
         private Movie[] _movies;
+
         private Movie _currentMovie;
+
         string[] moviesNames;
         
         public MoviesControl()
         {
             InitializeComponent();
             Random rand = new Random();
-            moviesNames = new string[] { "StarTrek", "Mission Impossible", "Ice Age", "The Matrix", "The Man From U.N.C.L.E." };
+            moviesNames = new string[] 
+            { "StarTrek", "Mission Impossible", "Ice Age", "The Matrix", "The Man From U.N.C.L.E." };
             _movies = new Movie[moviesNames.Length];
             Genre randGenre;
             for (int i = 0; i < _movies.Length; i++)
             {
                 randGenre = (Genre)rand.Next(0, Enum.GetValues(typeof(Genre)).Length);
-                _movies[i] = new Movie(moviesNames[i], rand.Next(300), rand.Next(1900, DateTime.Now.Year + 1), randGenre.ToString(), rand.NextDouble() * 10);
+                _movies[i] = new Movie(moviesNames[i],
+                    rand.Next(300), rand.Next(1900, DateTime.Now.Year + 1), randGenre.ToString(), rand.NextDouble() * 10);
             }
-        }
-
-        private void MoviesControl_Load(object sender, EventArgs e)
-        {
             listBox_Movies.Items.AddRange(moviesNames);
         }
 
         /// <summary>
         /// Метод поиска фильма с максимальным рейтингом в массиве.
         /// </summary>
-        /// <param name="mass"></param>
+        /// <param name="movieArray"></param>
         /// <returns></returns>
-        private int FindMovieWithMaxRating(Movie[] mass)
+        private int FindMovieWithMaxRating(Movie[] movieArray)
         {
             double max = 0;
             int indexOfMax = 0;
-            for (int i = 0; i < mass.Length; i++)
+            for (int i = 0; i < movieArray.Length; i++)
             {
-                if (mass[i].Rating > max)
+                if (movieArray[i].Rating > max)
                 {
-                    max = mass[i].Rating;
+                    max = movieArray[i].Rating;
                     indexOfMax = i;
                 }
             }
@@ -99,10 +99,11 @@ namespace Programming.View.Panels
                 {
                     _currentMovie.Duration = Convert.ToInt32(textBox_Duration.Text);
                 }
-                catch (Exception e1)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(e1.Message);
                     textBox_Duration.BackColor = AppColors.NotValidColor;
+                    ToolTip tip = new ToolTip();
+                    tip.Show(exception.Message, textBox_Duration, 3000);
                 }
             }
         }
@@ -121,10 +122,11 @@ namespace Programming.View.Panels
                 {
                     _currentMovie.Year = Convert.ToInt32(textBox_Year.Text);
                 }
-                catch (Exception e1)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(e1.Message);
                     textBox_Year.BackColor = AppColors.NotValidColor;
+                    ToolTip tip = new ToolTip();
+                    tip.Show(exception.Message, textBox_Year, 3000);
                 }
             }
         }
@@ -144,10 +146,11 @@ namespace Programming.View.Panels
                 {
                     _currentMovie.Genre = textBox_Genre.Text;
                 }
-                catch (Exception e1)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(e1.Message);
                     textBox_Genre.BackColor = AppColors.NotValidColor;
+                    ToolTip tip = new ToolTip();
+                    tip.Show(exception.Message, textBox_Genre, 3000);
                 }
             }
         }
@@ -166,10 +169,11 @@ namespace Programming.View.Panels
                 {
                     _currentMovie.Rating = Convert.ToDouble(textBox_Rating.Text);
                 }
-                catch (Exception e1)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(e1.Message);
-                    textBox_Rating.BackColor = Color.LightPink;
+                    textBox_Rating.BackColor = AppColors.NotValidColor;
+                    ToolTip tip = new ToolTip();
+                    tip.Show(exception.Message, textBox_Rating, 3000);
                 }
             }
         }

@@ -188,7 +188,6 @@
             this.Controls.Add(this.listBox_Movies);
             this.Name = "MoviesControl";
             this.Size = new System.Drawing.Size(329, 290);
-            this.Load += new System.EventHandler(this.MoviesControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

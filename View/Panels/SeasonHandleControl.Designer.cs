@@ -60,7 +60,6 @@
             this.comboBox_seasons.Name = "comboBox_seasons";
             this.comboBox_seasons.Size = new System.Drawing.Size(192, 28);
             this.comboBox_seasons.TabIndex = 3;
-            this.comboBox_seasons.SelectedIndexChanged += new System.EventHandler(this.comboBox_seasons_SelectedIndexChanged);
             // 
             // label_SeasonHandle
             // 
@@ -70,7 +69,6 @@
             this.label_SeasonHandle.Size = new System.Drawing.Size(119, 20);
             this.label_SeasonHandle.TabIndex = 6;
             this.label_SeasonHandle.Text = "Season Handle";
-            this.label_SeasonHandle.Click += new System.EventHandler(this.label_SeasonHandle_Click);
             // 
             // SeasonHandleControl
             // 

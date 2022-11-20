@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
-    class Contact
+    public class Contact
     {
         private string name;
+
         private string surname;
-        public string Number { set; get; } 
+
+        public string Number { set; get; }
+        
         public string Email { set; get; }
 
         public Contact() { }
@@ -18,12 +21,15 @@ namespace Programming.Model
         public Contact(string name, string surname, string number, string email)
         {
             Name = name;
+
             Surname = surname;
+
             Number = number;
+
             Email = email;
         }
 
-        private bool AssertStringContainsOnlyLetters(string value, string exeptionParametr)
+        private bool AssertStringContainsOnlyLetters(string value, string exceptionParameter)
         {
             if (!string.IsNullOrEmpty(value))
             {
@@ -31,8 +37,8 @@ namespace Programming.Model
                 {
                     if ((value[i] < 'A' || value[i] > 'Z') || (value[i] < 'a' || value[i] > 'z'))
                     {
-                        throw new ArgumentException(exeptionParametr + " Допускаюся только буквы английского алфавита!");
-                        //return false;
+                        throw new ArgumentException(exceptionParameter + 
+                            " Допускаюся только буквы английского алфавита!");
                     }
                 }
                 return true;
@@ -40,25 +46,25 @@ namespace Programming.Model
             else
                 return false;
         }
+        
         public string Name
         {
+            get { return name; }
             set 
             {
                 if (AssertStringContainsOnlyLetters(value, "Имя"))
                     name = value;
             }
-            get { return name; }
         }
 
         public string Surname 
         {
+            get { return surname; }
             set
             {
                 if (AssertStringContainsOnlyLetters(value, "Фамилия"))
                     surname = value;
             }
-            get { return surname; }
         }
-        
     }
 }
