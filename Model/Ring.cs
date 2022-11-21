@@ -8,9 +8,9 @@ namespace Programming.Model
 {
     public class Ring
     {
-        private double externalRadius = -1;
+        private double _externalRadius = -1;
 
-        private double internalRadius = -1;
+        private double _internalRadius = -1;
 
         public Ring () { }
 
@@ -27,29 +27,29 @@ namespace Programming.Model
         
         public double ExternalRadius
         {
-            get { return externalRadius; }
+            get { return _externalRadius; }
             set
             {
                 Validator.AssertOnPositiveValue(value, "Внешний радиус");
-                if (internalRadius != -1 && internalRadius > value)
+                if (_internalRadius != -1 && _internalRadius > value)
                 {
                     throw new ArgumentException("Внешний радиус должен быть больше внутреннего!");
                 }
-                externalRadius = value;
+                _externalRadius = value;
             }
         }
 
         public double InternalRadius
         {
-            get { return internalRadius; }
+            get { return _internalRadius; }
             set
             {
                 Validator.AssertOnPositiveValue(value, "Внешний радиус");
-                if (externalRadius != -1 && externalRadius < value)
+                if (_externalRadius != -1 && _externalRadius < value)
                 {
                     throw new ArgumentException("Внутренний радиус должен быть меньше внешнего!");
                 }
-                externalRadius = value;
+                _externalRadius = value;
             }
         }
 

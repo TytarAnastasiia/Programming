@@ -20,7 +20,6 @@ namespace InfoSysFlight.Model
                         (text[i] >= 'а' && text[i] <= 'я') ||
                         (text[i] >= 'А' && text[i] <= 'Я')))
                     {
-                        //return false;
                         throw new ArgumentException("Недопустимый символ в строке");
                     }
                 }
@@ -28,14 +27,17 @@ namespace InfoSysFlight.Model
             }
             else throw new ArgumentException("Строка не может быть пустой");
         }
+        
         public static bool AssertOnValidLength(string text, int minLength = 0, int maxLength = 100)
         {
             if (text.Length > minLength && text.Length <= maxLength)
             {
                 return true;
             }
-            throw new ArgumentException("Превышено допустимое количество символов (" + minLength + "-" + maxLength + ")");
+            throw new ArgumentException("Превышено допустимое количество символов ("
+                + minLength + "-" + maxLength + ")");
         }
+        
         public static bool AssertOnInRange(int min, int max, int number)
         {
             if (number >= min && number <= max)
@@ -45,6 +47,7 @@ namespace InfoSysFlight.Model
             else throw new ArgumentException("Выход за пределы допустимого диапазона от " + 
                 min + " до " + max);
         }
+        
         public static bool AssertOnValidDate(DateTime chosenDate, int maxNumberOfYear = 1)
         {
             DateTime minTime = DateTime.Now;
@@ -53,8 +56,10 @@ namespace InfoSysFlight.Model
             {
                 return true;
             }
-            else throw new ArgumentException("Выходит за допустимый диапазон дат от " + minTime + " до " + maxTime);
+            else throw new ArgumentException("Выходит за допустимый диапазон дат от "
+                + minTime + " до " + maxTime);
         }
+        
         public static bool AssertOnIsNumber(string text)
         {
             if (!string.IsNullOrWhiteSpace(text) && !string.IsNullOrEmpty(text))

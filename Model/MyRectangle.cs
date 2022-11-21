@@ -7,11 +7,11 @@ namespace Programming.Model
     {
         private static int _allRectanglesCount = 0;
 
-        double length;
+        private double _length;
 
-        double width;
+        private double _width;
 
-        string color;
+        private string _color;
 
         private int _id;
 
@@ -52,32 +52,32 @@ namespace Programming.Model
 
         public double Length 
         { 
-            get { return length; } 
+            get { return _length; } 
             set 
             {
                 Validator.AssertOnPositiveValue(value, "Длина");
-                length = value;
+                _length = value;
             }
         }
         
         public double Width
         {
-            get { return width; }
+            get { return _width; }
             set
             {
                 Validator.AssertOnPositiveValue(value, "Ширина");
-                width = value;
+                _width = value;
             }
         }
         
         public string Color
         {
-            get { return color; }
+            get { return _color; }
             set
             {
                 if (value == "" || value == null)
                     throw new ArgumentException("Цвет должен быть задан!");
-                color = value;
+                _color = value;
             }
         }
         

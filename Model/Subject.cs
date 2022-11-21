@@ -8,15 +8,15 @@ namespace Programming.Model
 {
     public class Subject
     {
-        public string TeacherName { set; get; }
+        public string TeacherName { get; set; }
 
-        public string Name { set; get; }
+        public string Name { get; set; }
 
-        public string Department { set; get; }
+        public string Department { get; set; }
 
-        public int Grade { set; get; }
+        public int Grade { get; set; }
 
-        public int Hours { set; get; }
+        public int Hours { get; set; }
 
         public Subject() { }
 

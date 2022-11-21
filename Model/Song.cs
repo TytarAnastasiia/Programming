@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Programming.Model
 {
     public class Song
     {
-        public string Performer { set; get; }
+        public int year;
 
-        public string Name { set; get; }
+        public string Performer { get; set; }
 
-        public string Album { set; get; }
+        public string Name { get; set; }
 
-        public int Year { set; get; }
+        public string Album { get; set; }
 
         public Song() { }
 
@@ -27,6 +28,16 @@ namespace Programming.Model
             Album = album;
 
             Year = year;
+        }
+
+        public int Year
+        {
+            get { return year; }
+            set
+            {
+                Validator.AssertValueInRange(value, 1960, 2020, "Год");
+                year = value;
+            }
         }
     }
 }

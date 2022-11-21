@@ -34,7 +34,7 @@ namespace Programming.View.Panels
                 _movies[i] = new Movie(moviesNames[i],
                     rand.Next(300), rand.Next(1900, DateTime.Now.Year + 1), randGenre.ToString(), rand.NextDouble() * 10);
             }
-            listBox_Movies.Items.AddRange(moviesNames);
+            MoviesListBox.Items.AddRange(moviesNames);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void button_FindMovie_Click(object sender, EventArgs e)
         {
-            listBox_Movies.SelectedIndex = FindMovieWithMaxRating(_movies);
+            MoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
         }
         
         /// <summary>
@@ -74,14 +74,14 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void listBox_Movies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_Movies.SelectedIndex != -1)
+            if (MoviesListBox.SelectedIndex != -1)
             {
-                _currentMovie = _movies[listBox_Movies.SelectedIndex];
-                textBox_Name.Text = _currentMovie.Name;
-                textBox_Duration.Text = _currentMovie.Duration.ToString();
-                textBox_Year.Text = _currentMovie.Year.ToString();
-                textBox_Genre.Text = _currentMovie.Genre;
-                textBox_Rating.Text = Math.Round(_currentMovie.Rating, 2).ToString();
+                _currentMovie = _movies[MoviesListBox.SelectedIndex];
+                NameTextBox.Text = _currentMovie.Name;
+                DurationTextBox.Text = _currentMovie.Duration.ToString();
+                YearTextBox.Text = _currentMovie.Year.ToString();
+                GenreTextBox.Text = _currentMovie.Genre;
+                RatingTextBox.Text = Math.Round(_currentMovie.Rating, 2).ToString();
             }
         }
         
@@ -92,18 +92,18 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Duration_TextChanged(object sender, EventArgs e)
         {
-            textBox_Duration.BackColor = Color.White;
-            if (textBox_Duration.Text != "" && textBox_Duration.Text != null)
+            DurationTextBox.BackColor = Color.White;
+            if (DurationTextBox.Text != "" && DurationTextBox.Text != null)
             {
                 try
                 {
-                    _currentMovie.Duration = Convert.ToInt32(textBox_Duration.Text);
+                    _currentMovie.Duration = Convert.ToInt32(DurationTextBox.Text);
                 }
                 catch (Exception exception)
                 {
-                    textBox_Duration.BackColor = AppColors.NotValidColor;
+                    DurationTextBox.BackColor = AppColors.NotValidColor;
                     ToolTip tip = new ToolTip();
-                    tip.Show(exception.Message, textBox_Duration, 3000);
+                    tip.Show(exception.Message, DurationTextBox, 3000);
                 }
             }
         }
@@ -115,18 +115,18 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Year_TextChanged(object sender, EventArgs e)
         {
-            textBox_Year.BackColor = AppColors.StandartColor;
-            if (textBox_Year.Text != "" && textBox_Year.Text != null)
+            YearTextBox.BackColor = AppColors.StandartColor;
+            if (YearTextBox.Text != "" && YearTextBox.Text != null)
             {
                 try
                 {
-                    _currentMovie.Year = Convert.ToInt32(textBox_Year.Text);
+                    _currentMovie.Year = Convert.ToInt32(YearTextBox.Text);
                 }
                 catch (Exception exception)
                 {
-                    textBox_Year.BackColor = AppColors.NotValidColor;
+                    YearTextBox.BackColor = AppColors.NotValidColor;
                     ToolTip tip = new ToolTip();
-                    tip.Show(exception.Message, textBox_Year, 3000);
+                    tip.Show(exception.Message, YearTextBox, 3000);
                 }
             }
         }
@@ -138,19 +138,19 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Genre_TextChanged(object sender, EventArgs e)
         {
-            if (listBox_Movies.SelectedIndex != -1)
+            if (MoviesListBox.SelectedIndex != -1)
             {
-                textBox_Genre.BackColor = AppColors.StandartColor;
+                GenreTextBox.BackColor = AppColors.StandartColor;
 
                 try
                 {
-                    _currentMovie.Genre = textBox_Genre.Text;
+                    _currentMovie.Genre = GenreTextBox.Text;
                 }
                 catch (Exception exception)
                 {
-                    textBox_Genre.BackColor = AppColors.NotValidColor;
+                    GenreTextBox.BackColor = AppColors.NotValidColor;
                     ToolTip tip = new ToolTip();
-                    tip.Show(exception.Message, textBox_Genre, 3000);
+                    tip.Show(exception.Message, GenreTextBox, 3000);
                 }
             }
         }
@@ -162,18 +162,18 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Rating_TextChanged(object sender, EventArgs e)
         {
-            textBox_Rating.BackColor = Color.White;
-            if (textBox_Rating.Text != "" && textBox_Rating.Text != null)
+            RatingTextBox.BackColor = Color.White;
+            if (RatingTextBox.Text != "" && RatingTextBox.Text != null)
             {
                 try
                 {
-                    _currentMovie.Rating = Convert.ToDouble(textBox_Rating.Text);
+                    _currentMovie.Rating = Convert.ToDouble(RatingTextBox.Text);
                 }
                 catch (Exception exception)
                 {
-                    textBox_Rating.BackColor = AppColors.NotValidColor;
+                    RatingTextBox.BackColor = AppColors.NotValidColor;
                     ToolTip tip = new ToolTip();
-                    tip.Show(exception.Message, textBox_Rating, 3000);
+                    tip.Show(exception.Message, RatingTextBox, 3000);
                 }
             }
         }

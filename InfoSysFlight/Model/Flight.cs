@@ -30,12 +30,12 @@ namespace InfoSysFlight.Model
 
             TypeOfFlight = typeOfFlight;
         }
+        
         public string DepartureTimeToString ()
         {
             return departureTime.ToString("dd.MM.yyyy HH:mm");
         }
         
-
         public string DeparturePoint
         {
             get { return departurePoint; }
@@ -46,6 +46,7 @@ namespace InfoSysFlight.Model
                 departurePoint = value;
             } 
         }
+        
         public string DestinationPoint
         {
             get { return destinationPoint; }
@@ -56,6 +57,7 @@ namespace InfoSysFlight.Model
                 destinationPoint = value;
             }
         }
+        
         public DateTime DepartureTime
         {
             get { return departureTime; }
@@ -65,6 +67,7 @@ namespace InfoSysFlight.Model
                 departureTime = value;
             }
         }
+        
         public int FlightDuration
         {
             get { return flightDuration; }
@@ -74,6 +77,7 @@ namespace InfoSysFlight.Model
                 flightDuration = value;
             }
         }
+        
         public FlightType TypeOfFlight
         {
             get { return typeOfFlight; }
@@ -82,10 +86,12 @@ namespace InfoSysFlight.Model
                 typeOfFlight = value;
             }
         }
+        
         public string FlightToString()
         {
             return DepartureTimeToString() + " " + DeparturePoint + " " + DestinationPoint;
         }
+        
         public string AllInfoToString()
         {
             return DeparturePoint + ";" + DestinationPoint + ";" 

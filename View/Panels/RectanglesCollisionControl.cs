@@ -217,7 +217,7 @@ namespace Programming.View.Panels
         {
             for (int i = 0; i < _myRectanglesList.Count; i++)
             {
-                _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
+                _rectanglePanels[i].BackColor = AppColors.GreenRectangle;
                 _myRectanglesList[i].Color = "Green";
                 listBox_rectanglesToShow.Items[i]
                        = GetRectangleTitle(_myRectanglesList[i]);
@@ -230,8 +230,8 @@ namespace Programming.View.Panels
                     {
                         _myRectanglesList[i].Color = "Red";
                         _myRectanglesList[j].Color = "Red";
-                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
-                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[i].BackColor = AppColors.RedRectangle;
+                        _rectanglePanels[j].BackColor = AppColors.RedRectangle;
                         listBox_rectanglesToShow.Items[i]
                                = GetRectangleTitle(_myRectanglesList[i]);
                         listBox_rectanglesToShow.Items[j]

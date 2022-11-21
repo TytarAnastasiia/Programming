@@ -8,9 +8,9 @@ namespace Programming.Model
 {
     public class Point2D
     {
-        private int x;
+        private int _x;
 
-        private int y;
+        private int _y;
 
         public Point2D (int x, int y)
         {
@@ -23,12 +23,12 @@ namespace Programming.Model
         { 
             get
             {
-                return this.x;
+                return this._x;
             }  
             private set 
             {
                 Validator.AssertValueInRange(value, 0, 1000, "Координата Х");
-                x = value;
+                _x = value;
             } 
         }
         
@@ -36,12 +36,12 @@ namespace Programming.Model
         {
             get
             {
-                return this.y;
+                return this._y;
             }
             private set
             {
                 Validator.AssertValueInRange(value, 0, 1000, "Координата Y");
-                y = value;
+                _y = value;
             }
         }
     }

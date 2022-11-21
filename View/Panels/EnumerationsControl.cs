@@ -17,7 +17,7 @@ namespace Programming.View.Panels
 
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBox_SelectedValue.Text = (int)ValuesListBox.SelectedItem + "";
+            SelectedValueTextBox.Text = (int)ValuesListBox.SelectedItem + "";
         }
 
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)

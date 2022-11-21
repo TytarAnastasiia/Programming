@@ -8,9 +8,9 @@ namespace Programming.Model
 {
     public class Contact
     {
-        private string name;
+        private string _name;
 
-        private string surname;
+        private string _surname;
 
         public string Number { set; get; }
         
@@ -28,6 +28,26 @@ namespace Programming.Model
 
             Email = email;
         }
+        
+        public string Name
+        {
+            get { return _name; }
+            set 
+            {
+                if (AssertStringContainsOnlyLetters(value, "Имя"))
+                    _name = value;
+            }
+        }
+
+        public string Surname 
+        {
+            get { return _surname; }
+            set
+            {
+                if (AssertStringContainsOnlyLetters(value, "Фамилия"))
+                    _surname = value;
+            }
+        }
 
         private bool AssertStringContainsOnlyLetters(string value, string exceptionParameter)
         {
@@ -37,7 +57,7 @@ namespace Programming.Model
                 {
                     if ((value[i] < 'A' || value[i] > 'Z') || (value[i] < 'a' || value[i] > 'z'))
                     {
-                        throw new ArgumentException(exceptionParameter + 
+                        throw new ArgumentException(exceptionParameter +
                             " Допускаюся только буквы английского алфавита!");
                     }
                 }
@@ -45,26 +65,6 @@ namespace Programming.Model
             }
             else
                 return false;
-        }
-        
-        public string Name
-        {
-            get { return name; }
-            set 
-            {
-                if (AssertStringContainsOnlyLetters(value, "Имя"))
-                    name = value;
-            }
-        }
-
-        public string Surname 
-        {
-            get { return surname; }
-            set
-            {
-                if (AssertStringContainsOnlyLetters(value, "Фамилия"))
-                    surname = value;
-            }
         }
     }
 }

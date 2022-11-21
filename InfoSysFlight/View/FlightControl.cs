@@ -34,7 +34,7 @@ namespace InfoSysFlight.View
             {
                 comboBox_flightType.Items.Add(value);
             }
-            button_ok.Visible = false;
+            OkButton.Visible = false;
         }
         private string ReadAllFile(string filePath)
         {
@@ -73,7 +73,7 @@ namespace InfoSysFlight.View
                     {
                         Flight f = ParseFlight(flightArr[i]);
                         _flightList.Add(f);
-                        listBox_flights.Items.Add(f.FlightToString());
+                        FlightsListBox.Items.Add(f.FlightToString());
                     }
                     catch (Exception e)
                     {
@@ -141,13 +141,13 @@ namespace InfoSysFlight.View
             
             CreateFlight();
             isAddClicked = true;
-            button_ok.Visible = true;
+            OkButton.Visible = true;
         }
         private void CreateFlight ()
         {
             _currentFlight = new Flight();
             _flightList.Add(_currentFlight);
-            listBox_flights.SelectedIndex = listBox_flights.Items.Add(_currentFlight.FlightToString());
+            FlightsListBox.SelectedIndex = FlightsListBox.Items.Add(_currentFlight.FlightToString());
         }
 
         private void textBox_departurePoint_TextChanged(object sender, EventArgs e)
@@ -220,9 +220,9 @@ namespace InfoSysFlight.View
 
         private void listBox_flights_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_flights.SelectedIndex != -1)
+            if (FlightsListBox.SelectedIndex != -1)
             {
-                _currentFlight = _flightList[listBox_flights.SelectedIndex];
+                _currentFlight = _flightList[FlightsListBox.SelectedIndex];
                 ShowFlightInfo();
             }
             else
@@ -268,16 +268,16 @@ namespace InfoSysFlight.View
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            int flightIndex = listBox_flights.SelectedIndex;
+            int flightIndex = FlightsListBox.SelectedIndex;
             isEditClicked = false;
             isAddClicked = false;
-            button_ok.Visible = false;
+            OkButton.Visible = false;
 
             if (flightIndex != -1)
             {
                 _flightList.RemoveAt(flightIndex);
-                listBox_flights.Items.RemoveAt(flightIndex);
-                listBox_flights.SelectedIndex = -1;
+                FlightsListBox.Items.RemoveAt(flightIndex);
+                FlightsListBox.SelectedIndex = -1;
                 CleanControls();
             }
             else
@@ -288,11 +288,11 @@ namespace InfoSysFlight.View
 
         private void button_edit_Click(object sender, EventArgs e)
         {
-            if (listBox_flights.SelectedIndex != -1)
+            if (FlightsListBox.SelectedIndex != -1)
                 isEditClicked = true;
             else
                 MessageBox.Show("Не выбран объект для редактирования");
-            button_ok.Visible = isEditClicked;
+            OkButton.Visible = isEditClicked;
         }
 
         private void button_ok_Click(object sender, EventArgs e)
@@ -318,7 +318,7 @@ namespace InfoSysFlight.View
             }
             isEditClicked = false;
             isAddClicked = false;
-            button_ok.Visible = false;
+            OkButton.Visible = false;
         }
 
         private void textBox_departurePoint_KeyPress(object sender, KeyPressEventArgs e)
@@ -333,10 +333,10 @@ namespace InfoSysFlight.View
         private void SortFlight()
         {
             _flightList = _flightList.OrderBy(f => f.DepartureTime).ToList();
-            listBox_flights.Items.Clear();
+            FlightsListBox.Items.Clear();
             for(int i = 0; i < _flightList.Count; i++)
             {
-                listBox_flights.Items.Add(_flightList[i].FlightToString());
+                FlightsListBox.Items.Add(_flightList[i].FlightToString());
             }
         }
     }

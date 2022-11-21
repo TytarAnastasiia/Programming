@@ -23,7 +23,8 @@ namespace Programming.View.Panels
             Weekday day;
             if (Enum.TryParse(textBox_EnteredDay.Text, out day))
             {
-                textBox_ParsingResult.Text = "Этот день недели (" + day.ToString() + " = " + (int)day + ") ";
+                textBox_ParsingResult.Text = "Этот день недели (" + 
+                    day.ToString() + " = " + (int)day + ") ";
             }
             else textBox_ParsingResult.Text = "Нет такого дня недели";
         }

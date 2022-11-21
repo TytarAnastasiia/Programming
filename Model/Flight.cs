@@ -8,10 +8,10 @@ namespace Programming.Model
 {
     public class Flight
     {
-        string destinationPoint;
+        public string destinationPoint;
 
-        string departurePoint;
+        public string departurePoint;
 
-        int timeInMinutes;
+        public int timeInMinutes;
     }
 }

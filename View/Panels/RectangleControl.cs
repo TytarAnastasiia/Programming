@@ -26,9 +26,9 @@ namespace Programming.View.Panels
             _currentRectangle = _rectangles[0];
             for (int i = 0; i < _rectangles.Length; i++)
             {
-                listBox_Rectangles.Items.Add("Rectangle " + (i + 1));
+                RectanglesListBox.Items.Add("Rectangle " + (i + 1));
             }
-            listBox_Rectangles.SelectedIndex = 0;
+            RectanglesListBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -38,15 +38,15 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void listBox_Rectangles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_Rectangles.SelectedIndex != -1)
+            if (RectanglesListBox.SelectedIndex != -1)
             {
-                _currentRectangle = _rectangles[listBox_Rectangles.SelectedIndex];
-                textBox_Length.Text = Math.Round(_currentRectangle.Length, 2) + "";
-                textBox_Width.Text = Math.Round(_currentRectangle.Width, 2) + "";
-                textBox_Color.Text = _currentRectangle.Color;
-                textBox_center_x.Text = _currentRectangle.Centre.X.ToString();
-                textBox_center_y.Text = _currentRectangle.Centre.Y.ToString();
-                textBox_id.Text = _currentRectangle.Id.ToString();
+                _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
+                LengthTextBox.Text = Math.Round(_currentRectangle.Length, 2) + "";
+                WidthTextBox.Text = Math.Round(_currentRectangle.Width, 2) + "";
+                ColorTextBox.Text = _currentRectangle.Color;
+                CenterXTextBox.Text = _currentRectangle.Centre.X.ToString();
+                CenterYTextBox.Text = _currentRectangle.Centre.Y.ToString();
+                IdTextBox.Text = _currentRectangle.Id.ToString();
             }
         }
         
@@ -77,7 +77,7 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void button_Find_Click(object sender, EventArgs e)
         {
-            listBox_Rectangles.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
         }
 
         /// <summary>
@@ -87,18 +87,18 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Length_TextChanged(object sender, EventArgs e)
         {
-            textBox_Length.BackColor = AppColors.StandartColor;
-            if (textBox_Length.Text != "" && textBox_Length.Text != null)
+            LengthTextBox.BackColor = AppColors.StandartColor;
+            if (LengthTextBox.Text != "" && LengthTextBox.Text != null)
             {
                 try
                 {
-                    _currentRectangle.Length = Convert.ToDouble(textBox_Length.Text);
+                    _currentRectangle.Length = Convert.ToDouble(LengthTextBox.Text);
                 }
                 catch (Exception exception)
                 {
-                    textBox_Length.BackColor = AppColors.NotValidColor;
+                    LengthTextBox.BackColor = AppColors.NotValidColor;
                     ToolTip tip = new ToolTip();
-                    tip.Show(exception.Message, textBox_Length, 3000);
+                    tip.Show(exception.Message, LengthTextBox, 3000);
                 }
             }
         }
@@ -110,18 +110,18 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Width_TextChanged(object sender, EventArgs e)
         {
-            textBox_Width.BackColor = AppColors.StandartColor;
-            if (textBox_Width.Text != "" && textBox_Width.Text != null)
+            WidthTextBox.BackColor = AppColors.StandartColor;
+            if (WidthTextBox.Text != "" && WidthTextBox.Text != null)
             {
                 try
                 {
-                    _currentRectangle.Width = Convert.ToDouble(textBox_Width.Text);
+                    _currentRectangle.Width = Convert.ToDouble(WidthTextBox.Text);
                 }
                 catch (Exception exception)
                 {
-                    textBox_Width.BackColor = AppColors.NotValidColor;
+                    WidthTextBox.BackColor = AppColors.NotValidColor;
                     ToolTip tip = new ToolTip();
-                    tip.Show(exception.Message, textBox_Width, 3000);
+                    tip.Show(exception.Message, WidthTextBox, 3000);
                 }
             }
         }
@@ -133,17 +133,17 @@ namespace Programming.View.Panels
         /// <param name="e"></param>
         private void textBox_Color_TextChanged(object sender, EventArgs e)
         {
-            textBox_Color.BackColor = AppColors.StandartColor;
+            ColorTextBox.BackColor = AppColors.StandartColor;
 
             try
             {
-                _currentRectangle.Color = textBox_Color.Text;
+                _currentRectangle.Color = ColorTextBox.Text;
             }
             catch (Exception exception)
             {
-                textBox_Color.BackColor = AppColors.NotValidColor;
+                ColorTextBox.BackColor = AppColors.NotValidColor;
                 ToolTip tip = new ToolTip();
-                tip.Show(exception.Message, textBox_Color, 3000);
+                tip.Show(exception.Message, ColorTextBox, 3000);
             }
         }
     }

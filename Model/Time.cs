@@ -8,11 +8,11 @@ namespace Programming.Model
 {
     internal class Time
     {
-        int hours;
+        public int hours;
 
-        int minutes;
+        public int minutes;
 
-        int seconds;
+        public int seconds;
 
         public int Hours
         {

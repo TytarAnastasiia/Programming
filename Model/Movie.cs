@@ -9,15 +9,15 @@ namespace Programming.Model
 {
     public class Movie
     {
-        private string name;
+        private string _name;
 
-        private int duration;
+        private int _duration;
 
-        private int year;
+        private int _year;
 
-        private string genre;
+        private string _genre;
 
-        private double rating;
+        private double _rating;
 
         public Movie() { }
 
@@ -36,53 +36,53 @@ namespace Programming.Model
 
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
                 if (value != "" && value != null)
-                    name = value;
+                    _name = value;
                 else throw new ArgumentException("Название должно быть задано!");
             }
         }
 
         public int Year
         {
-            get { return year; }
+            get { return _year; }
             set
             {
                 Validator.AssertValueInRange(value, 1900, DateTime.Now.Year, "Год");
-                year = value;
+                _year = value;
             }
         }
 
         public int Duration
         {
-            get { return duration; }
+            get { return _duration; }
             set
             {
                 Validator.AssertOnPositiveValue(value, "Продолжительность");
-                duration = value;
+                _duration = value;
             }
         }
 
         public string Genre
         {
-            get { return genre; }
+            get { return _genre; }
             set
             {
                 if (value != "" && value != null)
-                    genre = value;
+                    _genre = value;
                 else throw new ArgumentException("Жанр должен быть задан!");
             }
         }
 
         public double Rating
         {
-            get { return rating; }
+            get { return _rating; }
             set
             {
                 Validator.AssertValueInRange(value, 0, 10, "Рейтинг");
-                rating = value;
+                _rating = value;
             }
         }
     }
