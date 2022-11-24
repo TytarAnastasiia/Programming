@@ -29,7 +29,7 @@ namespace Programming.View.Panels
             if (_currentMyRectangle != null)
             {
                 textBox_rectY.BackColor = Color.White;
-                int index = listBox_rectanglesToShow.SelectedIndex;
+                int index = RectanglesToShowListBox.SelectedIndex;
                 if (textBox_rectY.Text != "" && textBox_rectY.Text != null)
                 {
                     try
@@ -37,11 +37,11 @@ namespace Programming.View.Panels
                         int z = _currentMyRectangle.Centre.X;
                         int y = Convert.ToInt32(textBox_rectY.Text);
                         int min = (int)_currentMyRectangle.Length / 2;
-                        int max = panel_canvas.Height - min;
+                        int max = CanvasPanel.Height - min;
                         Validator.AssertValueInRange(y, min, max, "Y центра");
                         _currentMyRectangle.Centre = new Point2D
                             (z, Convert.ToInt32(textBox_rectY.Text));
-                        listBox_rectanglesToShow.Items[index]
+                        RectanglesToShowListBox.Items[index]
                             = GetRectangleTitle(_currentMyRectangle);
                         DrawRectangle(index);
                     }
@@ -50,7 +50,7 @@ namespace Programming.View.Panels
                         MessageBox.Show(e1.Message);
                         textBox_rectY.BackColor = AppColors.NotValidColor;
                     }
-                    listBox_rectanglesToShow.Items[index]
+                    RectanglesToShowListBox.Items[index]
                        = GetRectangleTitle(_currentMyRectangle);
                 }
             }
@@ -61,7 +61,7 @@ namespace Programming.View.Panels
             if (_currentMyRectangle != null)
             {
                 textBox_rectX.BackColor = Color.White;
-                int index = listBox_rectanglesToShow.SelectedIndex;
+                int index = RectanglesToShowListBox.SelectedIndex;
                 if (textBox_rectX.Text != "" && textBox_rectX.Text != null)
                 {
                     try
@@ -69,7 +69,7 @@ namespace Programming.View.Panels
                         int y = _currentMyRectangle.Centre.Y;
                         int x = Convert.ToInt32(textBox_rectX.Text);
                         int min = (int)_currentMyRectangle.Width / 2;
-                        int max = panel_canvas.Width - min;
+                        int max = CanvasPanel.Width - min;
                         Validator.AssertValueInRange(x, min, max, "X центра");
                         _currentMyRectangle.Centre = new Point2D(x, y);
                         DrawRectangle(index);
@@ -79,7 +79,7 @@ namespace Programming.View.Panels
                         MessageBox.Show(e1.Message);
                         textBox_rectX.BackColor = AppColors.NotValidColor;
                     }
-                    listBox_rectanglesToShow.Items[index]
+                    RectanglesToShowListBox.Items[index]
                         = GetRectangleTitle(_currentMyRectangle);
                 }
             }
@@ -90,13 +90,13 @@ namespace Programming.View.Panels
             if (_currentMyRectangle != null)
             {
                 textBox_rectWidth.BackColor = Color.White;
-                int index = listBox_rectanglesToShow.SelectedIndex;
+                int index = RectanglesToShowListBox.SelectedIndex;
                 if (textBox_rectWidth.Text != "" && textBox_rectWidth.Text != null)
                 {
                     try
                     {
                         double w = Convert.ToDouble(textBox_rectWidth.Text);
-                        double max = Math.Min(_currentMyRectangle.Centre.X, panel_canvas.Width - _currentMyRectangle.Centre.X)*2;
+                        double max = Math.Min(_currentMyRectangle.Centre.X, CanvasPanel.Width - _currentMyRectangle.Centre.X)*2;
                         Validator.AssertValueInRange(w, 1.0d, max, "Ширина прямоугольника");
                         _currentMyRectangle.Width = w;
                         DrawRectangle(index);
@@ -106,7 +106,7 @@ namespace Programming.View.Panels
                         MessageBox.Show(e1.Message);
                         textBox_rectWidth.BackColor = AppColors.NotValidColor;
                     }
-                    listBox_rectanglesToShow.Items[index]
+                    RectanglesToShowListBox.Items[index]
                         = GetRectangleTitle(_currentMyRectangle);
                 }
             }
@@ -116,13 +116,13 @@ namespace Programming.View.Panels
             if (_currentMyRectangle != null)
             {
                 textBox_rectHeight.BackColor = Color.White;
-                int index = listBox_rectanglesToShow.SelectedIndex;
+                int index = RectanglesToShowListBox.SelectedIndex;
                 if (textBox_rectHeight.Text != "" && textBox_rectHeight.Text != null)
                 {
                     try
                     {
                         double h = Convert.ToDouble(textBox_rectHeight.Text);
-                        double max = Math.Min(_currentMyRectangle.Centre.Y, panel_canvas.Height-_currentMyRectangle.Centre.Y)*2;
+                        double max = Math.Min(_currentMyRectangle.Centre.Y, CanvasPanel.Height-_currentMyRectangle.Centre.Y)*2;
                         Validator.AssertValueInRange(h, 1.0d, max, "Высота прямоугольника");
                         _currentMyRectangle.Length = h;
                         DrawRectangle(index);
@@ -132,7 +132,7 @@ namespace Programming.View.Panels
                         MessageBox.Show(e1.Message);
                         textBox_rectHeight.BackColor = AppColors.NotValidColor;
                     }
-                    listBox_rectanglesToShow.Items[index]
+                    RectanglesToShowListBox.Items[index]
                         = GetRectangleTitle(_currentMyRectangle);
                 }
             }
@@ -140,13 +140,13 @@ namespace Programming.View.Panels
 
         private void button_RemoveRectangle_Click(object sender, EventArgs e)
         {
-            int index = listBox_rectanglesToShow.SelectedIndex;
+            int index = RectanglesToShowListBox.SelectedIndex;
             if (index != -1)
             {
                 _myRectanglesList.RemoveAt(index);
                 _rectanglePanels.RemoveAt(index);
-                listBox_rectanglesToShow.Items.RemoveAt(index);
-                panel_canvas.Controls.RemoveAt(index);
+                RectanglesToShowListBox.Items.RemoveAt(index);
+                CanvasPanel.Controls.RemoveAt(index);
                 _currentMyRectangle = null;
                 ClearRectangleInfo();
                 FindCollisions();
@@ -155,15 +155,15 @@ namespace Programming.View.Panels
 
         private void button_AddRectangle_Click(object sender, EventArgs e)
         {
-            MyRectangle newRect = RectangleFactory.Randomize(panel_canvas.Width, panel_canvas.Height);
+            MyRectangle newRect = RectangleFactory.Randomize(CanvasPanel.Width, CanvasPanel.Height);
             _myRectanglesList.Add(newRect);
             Panel newPanel = new Panel();
             _rectanglePanels.Add(newPanel);
-            panel_canvas.Controls.Add(newPanel);
+            CanvasPanel.Controls.Add(newPanel);
 
             _currentMyRectangle = newRect;
-            int i = listBox_rectanglesToShow.Items.Add(GetRectangleTitle(_currentMyRectangle));
-            listBox_rectanglesToShow.SelectedIndex = i;
+            int i = RectanglesToShowListBox.Items.Add(GetRectangleTitle(_currentMyRectangle));
+            RectanglesToShowListBox.SelectedIndex = i;
             DrawRectangle(i);
         }
 
@@ -185,9 +185,9 @@ namespace Programming.View.Panels
 
         private void listBox_rectanglesToShow_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_rectanglesToShow.SelectedIndex != -1)
+            if (RectanglesToShowListBox.SelectedIndex != -1)
             {
-                _currentMyRectangle = _myRectanglesList[listBox_rectanglesToShow.SelectedIndex];
+                _currentMyRectangle = _myRectanglesList[RectanglesToShowListBox.SelectedIndex];
                 UpdateRectangleInfo();
             }
         }
@@ -219,7 +219,7 @@ namespace Programming.View.Panels
             {
                 _rectanglePanels[i].BackColor = AppColors.GreenRectangle;
                 _myRectanglesList[i].Color = "Green";
-                listBox_rectanglesToShow.Items[i]
+                RectanglesToShowListBox.Items[i]
                        = GetRectangleTitle(_myRectanglesList[i]);
             }
             for (int i = 0; i < _myRectanglesList.Count; i++)
@@ -232,9 +232,9 @@ namespace Programming.View.Panels
                         _myRectanglesList[j].Color = "Red";
                         _rectanglePanels[i].BackColor = AppColors.RedRectangle;
                         _rectanglePanels[j].BackColor = AppColors.RedRectangle;
-                        listBox_rectanglesToShow.Items[i]
+                        RectanglesToShowListBox.Items[i]
                                = GetRectangleTitle(_myRectanglesList[i]);
-                        listBox_rectanglesToShow.Items[j]
+                        RectanglesToShowListBox.Items[j]
                                = GetRectangleTitle(_myRectanglesList[j]);
                     }
                 }
