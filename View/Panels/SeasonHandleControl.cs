@@ -13,6 +13,9 @@ namespace Programming.View.Panels
 {
     public partial class SeasonHandleControl : UserControl
     {
+        /// <summary>
+        /// Инициализация элементов.
+        /// </summary>
         public SeasonHandleControl()
         {
             InitializeComponent();

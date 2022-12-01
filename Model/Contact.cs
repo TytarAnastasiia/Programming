@@ -6,18 +6,40 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
+    /// <summary>
+    /// Хранит информацию о пользователе.
+    /// </summary>
     public class Contact
     {
+        /// <summary>
+        /// Имя пользователя.
+        /// </summary>
         private string _name;
 
+        /// <summary>
+        /// Фамилия пользователя.
+        /// </summary>
         private string _surname;
 
+        /// <summary>
+        /// Номер телефона пользователя.
+        /// </summary>
         public string Number { set; get; }
         
+        /// <summary>
+        /// Электронная почта пользователя.
+        /// </summary>
         public string Email { set; get; }
 
         public Contact() { }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Contact"/>.
+        /// </summary>
+        /// <param name="name">Имя. Состоит только из букв.</param>
+        /// <param name="surname">Фамилия. Состоит только из букв.</param>
+        /// <param name="number">Номер телефона.</param>
+        /// <param name="email">Электронная почта.</param>
         public Contact(string name, string surname, string number, string email)
         {
             Name = name;
@@ -29,6 +51,9 @@ namespace Programming.Model
             Email = email;
         }
         
+        /// <summary>
+        /// Проверяет имя.
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -39,6 +64,9 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет фамилию.
+        /// </summary>
         public string Surname 
         {
             get { return _surname; }
@@ -49,6 +77,13 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет, чтобы строка состояла только их букв.
+        /// </summary>
+        /// <param name="value">Проверяемая строка.</param>
+        /// <param name="exceptionParameter">Вызываемый параметр.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         private bool AssertStringContainsOnlyLetters(string value, string exceptionParameter)
         {
             if (!string.IsNullOrEmpty(value))

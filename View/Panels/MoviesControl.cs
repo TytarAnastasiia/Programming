@@ -19,7 +19,10 @@ namespace Programming.View.Panels
         private Movie _currentMovie;
 
         string[] moviesNames;
-        
+
+        /// <summary>
+        /// Инициализация элементов.
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();

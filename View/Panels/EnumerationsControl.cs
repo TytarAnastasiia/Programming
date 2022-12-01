@@ -6,6 +6,9 @@ namespace Programming.View.Panels
 {
     public partial class EnumerationsControl : UserControl
     {
+        /// <summary>
+        /// Инициализация элементов.
+        /// </summary>
         public EnumerationsControl()
         {
             InitializeComponent();

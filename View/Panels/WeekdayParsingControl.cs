@@ -13,6 +13,9 @@ namespace Programming.View.Panels
 {
     public partial class WeekdayParsingControl : UserControl
     {
+        /// <summary>
+        /// Инициализация элементов.
+        /// </summary>
         public WeekdayParsingControl()
         {
             InitializeComponent();

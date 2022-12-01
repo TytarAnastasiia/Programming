@@ -15,6 +15,9 @@ namespace Programming.View.Panels
 
         private List<MyRectangle> _myRectanglesList;
 
+        /// <summary>
+        /// Инициализация элементов.
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();

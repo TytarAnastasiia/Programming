@@ -10,6 +10,9 @@ namespace Programming.View.Panels
 
         private MyRectangle _currentRectangle;
 
+        /// <summary>
+        /// Инициализация элементов.
+        /// </summary>
         public RectangleControl()
         {
             InitializeComponent();

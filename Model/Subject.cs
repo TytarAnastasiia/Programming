@@ -33,5 +33,4 @@ namespace Programming.Model
             Hours = hours;
         }
     }
-
 }

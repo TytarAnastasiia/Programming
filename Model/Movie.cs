@@ -7,20 +7,47 @@ using System.Windows.Forms;
 
 namespace Programming.Model
 {
+    /// <summary>
+    /// Хранит информацию о фильме.
+    /// </summary>
     public class Movie
     {
+        /// <summary>
+        /// Название фильма.
+        /// </summary>
         private string _name;
 
+        /// <summary>
+        /// Продолжительность фильма.
+        /// </summary>
         private int _duration;
 
+        /// <summary>
+        /// Год выпуска фильма.
+        /// </summary>
         private int _year;
 
+        /// <summary>
+        /// Жанр фильма.
+        /// </summary>
         private string _genre;
 
+        /// <summary>
+        /// Оценка фильма.
+        /// </summary>
         private double _rating;
 
         public Movie() { }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Movie"/>.
+        /// </summary>
+        /// <param name="name">Название фильма. Должно быть задано.</param>
+        /// <param name="duration">Продолжительность фильма. 
+        /// Значение должно быть положительным.</param>
+        /// <param name="year">Год выпуска. От 1900 года.</param>
+        /// <param name="genre">Жанр. Должен быть задан.</param>
+        /// <param name="rating">Оценка. От 0 до 10.</param>
         public Movie(string name, int duration, int year, string genre, double rating)
         {
             Name = name;
@@ -34,6 +61,9 @@ namespace Programming.Model
             Rating = rating;
         }
 
+        /// <summary>
+        /// Проверяет название.
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -45,6 +75,9 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет год на заданный интервал.
+        /// </summary>
         public int Year
         {
             get { return _year; }
@@ -55,6 +88,9 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет продолжительность на положительное значение.
+        /// </summary>
         public int Duration
         {
             get { return _duration; }
@@ -65,6 +101,9 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет жанр.
+        /// </summary>
         public string Genre
         {
             get { return _genre; }
@@ -76,6 +115,9 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет оценку на заданный интервал.
+        /// </summary>
         public double Rating
         {
             get { return _rating; }

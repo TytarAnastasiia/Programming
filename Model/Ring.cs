@@ -6,14 +6,31 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
+    /// <summary>
+    /// Хранит информацию о кольце.
+    /// </summary>
     public class Ring
     {
+        /// <summary>
+        /// Внешний радиус кольца.
+        /// </summary>
         private double _externalRadius = -1;
 
+        /// <summary>
+        /// Внутренний радиус кольца.
+        /// </summary>
         private double _internalRadius = -1;
 
         public Ring () { }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Ring"/>.
+        /// </summary>
+        /// <param name="center">Точка центра кольца.</param>
+        /// <param name="internalRadius">Внутренний радиус.
+        /// Должен быть положительным и не превышать внешний радиус.</param>
+        /// <param name="externalRadius">Внешний радиус.
+        /// Должен быть положительным и быть больше, чем внутренний радиус.</param>
         public Ring ( Point2D center, double internalRadius, double externalRadius ) 
         {
             Center = center;
@@ -23,8 +40,14 @@ namespace Programming.Model
             ExternalRadius = externalRadius;
         }
 
+        /// <summary>
+        /// Устанавливает точку центра кольца.
+        /// </summary>
         public Point2D Center { get; set; }
         
+        /// <summary>
+        /// Проверка внешнего радиуса на заданные ограничения.
+        /// </summary>
         public double ExternalRadius
         {
             get { return _externalRadius; }
@@ -39,12 +62,15 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверка внутреннего радиуса на заданные ограничения.
+        /// </summary>
         public double InternalRadius
         {
             get { return _internalRadius; }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Внешний радиус");
+                Validator.AssertOnPositiveValue(value, "Внутренний радиус");
                 if (_externalRadius != -1 && _externalRadius < value)
                 {
                     throw new ArgumentException("Внутренний радиус должен быть меньше внешнего!");
@@ -53,6 +79,9 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Определение площади кольца.
+        /// </summary>
         public double Area
         {
             get 

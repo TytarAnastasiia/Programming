@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
+    /// <summary>
+    /// Перечисление дней недели.
+    /// </summary>
     enum Weekday
     {
         Monday = 1,
