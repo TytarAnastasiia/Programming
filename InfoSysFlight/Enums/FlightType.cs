@@ -1,6 +1,9 @@
 ﻿namespace InfoSysFlight.Enums
 {
-    enum FlightType
+    /// <summary>
+    /// Перечисление типов перелётов.
+    /// </summary>
+    public enum FlightType
     {
         Internal,
         International

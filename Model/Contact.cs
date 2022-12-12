@@ -43,11 +43,8 @@ namespace Programming.Model
         public Contact(string name, string surname, string number, string email)
         {
             Name = name;
-
             Surname = surname;
-
             Number = number;
-
             Email = email;
         }
         
@@ -60,7 +57,9 @@ namespace Programming.Model
             set 
             {
                 if (AssertStringContainsOnlyLetters(value, "Имя"))
+                {
                     _name = value;
+                }
             }
         }
 
@@ -96,10 +95,13 @@ namespace Programming.Model
                             " Допускаюся только буквы английского алфавита!");
                     }
                 }
+
                 return true;
             }
             else
-                return false;
+            { 
+                return false; 
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InfoSysFlight.Model
 {
-    static class Validator
+    public static class Validator
     {
         public static bool AssertOnValidText(string text)
         {
@@ -16,7 +16,7 @@ namespace InfoSysFlight.Model
                 {
                     if (!((text[i] >= 'a' && text[i] <= 'z') ||
                         (text[i] >= 'A' && text[i] <= 'Z') ||
-                        (text[i] == '-' || text[i] == '.') || 
+                        (text[i] == '-' || text[i] == '.') ||
                         (text[i] >= 'а' && text[i] <= 'я') ||
                         (text[i] >= 'А' && text[i] <= 'Я')))
                     {
@@ -25,7 +25,10 @@ namespace InfoSysFlight.Model
                 }
                 return true;
             }
-            else throw new ArgumentException("Строка не может быть пустой");
+            else
+            { 
+                throw new ArgumentException("Строка не может быть пустой");
+            }
         }
         
         public static bool AssertOnValidLength(string text, int minLength = 0, int maxLength = 100)
@@ -68,7 +71,6 @@ namespace InfoSysFlight.Model
                 {
                     if (!((text[i] >= '0' && text[i] <= '9')))
                     {
-                        //return false;
                         throw new ArgumentException("Допустимы только цифры");
                     }
                 }

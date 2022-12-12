@@ -9,7 +9,7 @@ namespace Programming.Model
     /// <summary>
     /// Перечисление цветов.
     /// </summary>
-    enum Colour
+    public enum Colour
     {
         Red,
         Orange,

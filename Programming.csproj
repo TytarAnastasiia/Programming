@@ -53,6 +53,7 @@
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\MyRectangle.cs" />
     <Compile Include="Model\Point2D.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Ring.cs" />
     <Compile Include="Model\Enums\Season.cs" />
     <Compile Include="Model\Enums\Manufactures.cs" />

@@ -3,95 +3,135 @@ using InfoSysFlight.Enums;
 
 namespace InfoSysFlight.Model
 {
-    class Flight
+    /// <summary>
+    /// Хранит информацию о перелёте.
+    /// </summary>
+    public class Flight
     {
-        private string departurePoint;
+        /// <summary>
+        /// Пункт вылета.
+        /// </summary>
+        private string _departurePoint;
 
-        private string destinationPoint;
+        /// <summary>
+        /// Пункт прибытия.
+        /// </summary>
+        private string _destinationPoint;
 
-        private DateTime departureTime;
+        /// <summary>
+        /// Время вылета.
+        /// </summary>
+        private DateTime _departureTime;
 
-        private int flightDuration;
+        /// <summary>
+        /// Продолжительность полёта.
+        /// </summary>
+        private int _flightDuration;
 
-        private FlightType typeOfFlight;
+        /// <summary>
+        /// Тип перелёта.
+        /// </summary>
+        private FlightType _flightType;
 
-        public Flight () { } 
-
-        public Flight(string departurePoint, string destinationPoint, 
-            DateTime departureTime, int flightDuration, FlightType typeOfFlight) 
+        /// <summary>
+        /// Переводит время вылета в строку.
+        /// </summary>
+        /// <returns>Возвращает строку.</returns>
+        public string DepartureTimeToString()
         {
-            DeparturePoint = departurePoint;
-
-            DestinationPoint = destinationPoint;
-
-            DepartureTime = departureTime;
-
-            FlightDuration = flightDuration;
-
-            TypeOfFlight = typeOfFlight;
+            return _departureTime.ToString("dd.MM.yyyy HH:mm");
         }
         
-        public string DepartureTimeToString ()
-        {
-            return departureTime.ToString("dd.MM.yyyy HH:mm");
-        }
-        
+        /// <summary>
+        /// Проверяет пункт вылета.
+        /// </summary>
         public string DeparturePoint
         {
-            get { return departurePoint; }
+            get 
+            { 
+                return _departurePoint; 
+            }
             set
             {
                 Validator.AssertOnValidText(value);
                 Validator.AssertOnValidLength(value);
-                departurePoint = value;
+                _departurePoint = value;
             } 
         }
         
+        /// <summary>
+        /// Проверяет пункт прибытия.
+        /// </summary>
         public string DestinationPoint
         {
-            get { return destinationPoint; }
+            get 
+            {
+                return _destinationPoint;
+            }
             set
             {
                 Validator.AssertOnValidText(value);
                 Validator.AssertOnValidLength(value);
-                destinationPoint = value;
+                _destinationPoint = value;
             }
         }
         
+        /// <summary>
+        /// Проверяет время вылета.
+        /// </summary>
         public DateTime DepartureTime
         {
-            get { return departureTime; }
+            get 
+            {
+                return _departureTime; 
+            }
             set
             {
                 Validator.AssertOnValidDate(value);
-                departureTime = value;
+                _departureTime = value;
             }
         }
         
+        /// <summary>
+        /// Проверяет продолжительность полёта.
+        /// </summary>
         public int FlightDuration
         {
-            get { return flightDuration; }
+            get 
+            { 
+                return _flightDuration; 
+            }
             set
             {
                 Validator.AssertOnInRange(0, 1000, value);
-                flightDuration = value;
+                _flightDuration = value;
             }
         }
         
+        /// <summary>
+        /// Устанавливает тип перелёта.
+        /// </summary>
         public FlightType TypeOfFlight
         {
-            get { return typeOfFlight; }
+            get 
+            {
+                return _flightType; 
+            }
             set
             {
-                typeOfFlight = value;
+                _flightType = value;
             }
         }
-        
+                
         public string FlightToString()
         {
             return DepartureTimeToString() + " " + DeparturePoint + " " + DestinationPoint;
         }
-        
+
+        /// <summary>
+        /// Переводит всю информацию о полёте в строку.
+        /// </summary>
+        /// <returns>Возвращает строку.</returns>
         public string AllInfoToString()
         {
             return DeparturePoint + ";" + DestinationPoint + ";" 
@@ -100,13 +140,39 @@ namespace InfoSysFlight.Model
     
         public bool IsAllCompleted()
         {
-            if (flightDuration == 0 || departureTime == DateTime.MinValue ||
-                string.IsNullOrWhiteSpace(departurePoint) || string.IsNullOrEmpty(departurePoint)
-                || string.IsNullOrWhiteSpace(destinationPoint) || string.IsNullOrEmpty(destinationPoint))
+            if (_flightDuration == 0 || _departureTime == DateTime.MinValue ||
+                string.IsNullOrWhiteSpace(_departurePoint) || string.IsNullOrEmpty(_departurePoint)
+                || string.IsNullOrWhiteSpace(_destinationPoint) || string.IsNullOrEmpty(_destinationPoint))
             {
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Flight"/>.
+        /// </summary>
+        public Flight() { }
+
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Flight"/>.
+        /// </summary>
+        /// <param name="departurePoint">Пункт вылета. Должен быть задан,
+        /// содержать корректные символы и не превышать заданной длины.</param>
+        /// <param name="destinationPoint">Пункт прибытия. Должен быть задан,
+        /// содержать корректные символы и не превышать заданной длины.</param>
+        /// <param name="departureTime">Время вылета. Должно находиться в 
+        /// верном диапазоне дат.</param>
+        /// <param name="flightDuration">Продолжительность полёта. Должна быть задана.</param>
+        /// <param name="typeOfFlight">Тип перелёта.</param>
+        public Flight(string departurePoint, string destinationPoint,
+            DateTime departureTime, int flightDuration, FlightType typeOfFlight)
+        {
+            DeparturePoint = departurePoint;
+            DestinationPoint = destinationPoint;
+            DepartureTime = departureTime;
+            FlightDuration = flightDuration;
+            TypeOfFlight = typeOfFlight;
         }
     }
 }

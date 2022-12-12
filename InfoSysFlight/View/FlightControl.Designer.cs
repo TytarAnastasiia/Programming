@@ -28,85 +28,156 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlightControl));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.FlightPanel = new System.Windows.Forms.Panel();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.FlightsListBox = new System.Windows.Forms.ListBox();
             this.SelectedFlightInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.comboBox_flightType = new System.Windows.Forms.ComboBox();
-            this.textBox_flightDuration = new System.Windows.Forms.TextBox();
-            this.dateTimePicker_departureTime = new System.Windows.Forms.DateTimePicker();
+            this.FlightTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.FlightDurationTextBox = new System.Windows.Forms.TextBox();
+            this.DepartureTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.FlightTypeLabel = new System.Windows.Forms.Label();
             this.FlightDurationLabel = new System.Windows.Forms.Label();
             this.DepartureTimeLabel = new System.Windows.Forms.Label();
             this.DestinationPointLabel = new System.Windows.Forms.Label();
             this.DeparturePointLabel = new System.Windows.Forms.Label();
-            this.textBox_destinationPoint = new System.Windows.Forms.TextBox();
-            this.textBox_departurePoint = new System.Windows.Forms.TextBox();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.EditButton = new System.Windows.Forms.Button();
-            this.OkButton = new System.Windows.Forms.Button();
+            this.DestinationPointTextBox = new System.Windows.Forms.TextBox();
+            this.DeparturePointTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.FlightPanel.SuspendLayout();
             this.SelectedFlightInfoGroupBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.FlightPanel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(524, 305);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // FlightPanel
+            // 
+            this.FlightPanel.Controls.Add(this.OkButton);
+            this.FlightPanel.Controls.Add(this.EditButton);
+            this.FlightPanel.Controls.Add(this.DeleteButton);
+            this.FlightPanel.Controls.Add(this.AddButton);
+            this.FlightPanel.Controls.Add(this.FlightsListBox);
+            this.FlightPanel.Controls.Add(this.SelectedFlightInfoGroupBox);
+            this.FlightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlightPanel.Location = new System.Drawing.Point(3, 3);
+            this.FlightPanel.Name = "FlightPanel";
+            this.FlightPanel.Size = new System.Drawing.Size(518, 299);
+            this.FlightPanel.TabIndex = 0;
+            // 
+            // OkButton
+            // 
+            this.OkButton.Image = ((System.Drawing.Image)(resources.GetObject("OkButton.Image")));
+            this.OkButton.Location = new System.Drawing.Point(262, 203);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(2);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(78, 45);
+            this.OkButton.TabIndex = 17;
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            // 
+            // EditButton
+            // 
+            this.EditButton.Image = ((System.Drawing.Image)(resources.GetObject("EditButton.Image")));
+            this.EditButton.Location = new System.Drawing.Point(98, 252);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(78, 45);
+            this.EditButton.TabIndex = 16;
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
+            this.DeleteButton.Location = new System.Drawing.Point(180, 252);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(78, 45);
+            this.DeleteButton.TabIndex = 15;
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
+            this.AddButton.Location = new System.Drawing.Point(16, 252);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(78, 45);
+            this.AddButton.TabIndex = 14;
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // FlightsListBox
             // 
             this.FlightsListBox.FormattingEnabled = true;
-            this.FlightsListBox.Location = new System.Drawing.Point(21, 27);
-            this.FlightsListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FlightsListBox.Location = new System.Drawing.Point(16, 23);
+            this.FlightsListBox.Margin = new System.Windows.Forms.Padding(2);
             this.FlightsListBox.Name = "FlightsListBox";
-            this.FlightsListBox.Size = new System.Drawing.Size(235, 225);
-            this.FlightsListBox.TabIndex = 0;
-            this.FlightsListBox.SelectedIndexChanged += new System.EventHandler(this.listBox_flights_SelectedIndexChanged);
+            this.FlightsListBox.Size = new System.Drawing.Size(242, 225);
+            this.FlightsListBox.TabIndex = 12;
             // 
             // SelectedFlightInfoGroupBox
             // 
-            this.SelectedFlightInfoGroupBox.Controls.Add(this.comboBox_flightType);
-            this.SelectedFlightInfoGroupBox.Controls.Add(this.textBox_flightDuration);
-            this.SelectedFlightInfoGroupBox.Controls.Add(this.dateTimePicker_departureTime);
+            this.SelectedFlightInfoGroupBox.Controls.Add(this.FlightTypeComboBox);
+            this.SelectedFlightInfoGroupBox.Controls.Add(this.FlightDurationTextBox);
+            this.SelectedFlightInfoGroupBox.Controls.Add(this.DepartureTimeDateTimePicker);
             this.SelectedFlightInfoGroupBox.Controls.Add(this.FlightTypeLabel);
             this.SelectedFlightInfoGroupBox.Controls.Add(this.FlightDurationLabel);
             this.SelectedFlightInfoGroupBox.Controls.Add(this.DepartureTimeLabel);
             this.SelectedFlightInfoGroupBox.Controls.Add(this.DestinationPointLabel);
             this.SelectedFlightInfoGroupBox.Controls.Add(this.DeparturePointLabel);
-            this.SelectedFlightInfoGroupBox.Controls.Add(this.textBox_destinationPoint);
-            this.SelectedFlightInfoGroupBox.Controls.Add(this.textBox_departurePoint);
-            this.SelectedFlightInfoGroupBox.Location = new System.Drawing.Point(260, 27);
-            this.SelectedFlightInfoGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SelectedFlightInfoGroupBox.Controls.Add(this.DestinationPointTextBox);
+            this.SelectedFlightInfoGroupBox.Controls.Add(this.DeparturePointTextBox);
+            this.SelectedFlightInfoGroupBox.Location = new System.Drawing.Point(262, 23);
+            this.SelectedFlightInfoGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.SelectedFlightInfoGroupBox.Name = "SelectedFlightInfoGroupBox";
-            this.SelectedFlightInfoGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.SelectedFlightInfoGroupBox.Size = new System.Drawing.Size(243, 176);
-            this.SelectedFlightInfoGroupBox.TabIndex = 1;
+            this.SelectedFlightInfoGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.SelectedFlightInfoGroupBox.Size = new System.Drawing.Size(238, 176);
+            this.SelectedFlightInfoGroupBox.TabIndex = 13;
             this.SelectedFlightInfoGroupBox.TabStop = false;
             this.SelectedFlightInfoGroupBox.Text = "Selected Flight";
             // 
-            // comboBox_flightType
+            // FlightTypeComboBox
             // 
-            this.comboBox_flightType.FormattingEnabled = true;
-            this.comboBox_flightType.Location = new System.Drawing.Point(96, 125);
-            this.comboBox_flightType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox_flightType.Name = "comboBox_flightType";
-            this.comboBox_flightType.Size = new System.Drawing.Size(131, 21);
-            this.comboBox_flightType.TabIndex = 9;
-            this.comboBox_flightType.SelectedIndexChanged += new System.EventHandler(this.comboBox_flightType_SelectedIndexChanged);
+            this.FlightTypeComboBox.FormattingEnabled = true;
+            this.FlightTypeComboBox.Location = new System.Drawing.Point(96, 125);
+            this.FlightTypeComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FlightTypeComboBox.Name = "FlightTypeComboBox";
+            this.FlightTypeComboBox.Size = new System.Drawing.Size(131, 21);
+            this.FlightTypeComboBox.TabIndex = 9;
             // 
-            // textBox_flightDuration
+            // FlightDurationTextBox
             // 
-            this.textBox_flightDuration.Location = new System.Drawing.Point(96, 105);
-            this.textBox_flightDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_flightDuration.Name = "textBox_flightDuration";
-            this.textBox_flightDuration.Size = new System.Drawing.Size(131, 20);
-            this.textBox_flightDuration.TabIndex = 8;
-            this.textBox_flightDuration.TextChanged += new System.EventHandler(this.textBox_flightDuration_TextChanged);
-            this.textBox_flightDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_departurePoint_KeyPress);
+            this.FlightDurationTextBox.Location = new System.Drawing.Point(96, 105);
+            this.FlightDurationTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FlightDurationTextBox.Name = "FlightDurationTextBox";
+            this.FlightDurationTextBox.Size = new System.Drawing.Size(131, 20);
+            this.FlightDurationTextBox.TabIndex = 8;
             // 
-            // dateTimePicker_departureTime
+            // DepartureTimeDateTimePicker
             // 
-            this.dateTimePicker_departureTime.CustomFormat = "d.MM.yyyy HH:mm";
-            this.dateTimePicker_departureTime.Location = new System.Drawing.Point(96, 84);
-            this.dateTimePicker_departureTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dateTimePicker_departureTime.Name = "dateTimePicker_departureTime";
-            this.dateTimePicker_departureTime.Size = new System.Drawing.Size(131, 20);
-            this.dateTimePicker_departureTime.TabIndex = 7;
-            this.dateTimePicker_departureTime.ValueChanged += new System.EventHandler(this.dateTimePicker_departureTime_ValueChanged);
+            this.DepartureTimeDateTimePicker.CustomFormat = "d.MM.yyyy HH:mm";
+            this.DepartureTimeDateTimePicker.Location = new System.Drawing.Point(96, 84);
+            this.DepartureTimeDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.DepartureTimeDateTimePicker.Name = "DepartureTimeDateTimePicker";
+            this.DepartureTimeDateTimePicker.Size = new System.Drawing.Size(131, 20);
+            this.DepartureTimeDateTimePicker.TabIndex = 7;
             // 
             // FlightTypeLabel
             // 
@@ -158,84 +229,33 @@
             this.DeparturePointLabel.TabIndex = 2;
             this.DeparturePointLabel.Text = "Departure point:";
             // 
-            // textBox_destinationPoint
+            // DestinationPointTextBox
             // 
-            this.textBox_destinationPoint.Location = new System.Drawing.Point(96, 63);
-            this.textBox_destinationPoint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_destinationPoint.Name = "textBox_destinationPoint";
-            this.textBox_destinationPoint.Size = new System.Drawing.Size(131, 20);
-            this.textBox_destinationPoint.TabIndex = 1;
-            this.textBox_destinationPoint.TextChanged += new System.EventHandler(this.textBox_destinationPoint_TextChanged);
-            this.textBox_destinationPoint.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_departurePoint_KeyPress);
+            this.DestinationPointTextBox.Location = new System.Drawing.Point(96, 63);
+            this.DestinationPointTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.DestinationPointTextBox.Name = "DestinationPointTextBox";
+            this.DestinationPointTextBox.Size = new System.Drawing.Size(131, 20);
+            this.DestinationPointTextBox.TabIndex = 1;
             // 
-            // textBox_departurePoint
+            // DeparturePointTextBox
             // 
-            this.textBox_departurePoint.Location = new System.Drawing.Point(96, 42);
-            this.textBox_departurePoint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_departurePoint.Name = "textBox_departurePoint";
-            this.textBox_departurePoint.Size = new System.Drawing.Size(131, 20);
-            this.textBox_departurePoint.TabIndex = 0;
-            this.textBox_departurePoint.TextChanged += new System.EventHandler(this.textBox_departurePoint_TextChanged);
-            this.textBox_departurePoint.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_departurePoint_KeyPress);
-            // 
-            // AddButton
-            // 
-            this.AddButton.Location = new System.Drawing.Point(21, 256);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(50, 19);
-            this.AddButton.TabIndex = 2;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.button_add_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Location = new System.Drawing.Point(129, 256);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(50, 19);
-            this.DeleteButton.TabIndex = 3;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.button_delete_Click);
-            // 
-            // EditButton
-            // 
-            this.EditButton.Location = new System.Drawing.Point(75, 256);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(50, 19);
-            this.EditButton.TabIndex = 4;
-            this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = true;
-            this.EditButton.Click += new System.EventHandler(this.button_edit_Click);
-            // 
-            // OkButton
-            // 
-            this.OkButton.Location = new System.Drawing.Point(260, 207);
-            this.OkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(50, 19);
-            this.OkButton.TabIndex = 5;
-            this.OkButton.Text = "Ok";
-            this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.button_ok_Click);
+            this.DeparturePointTextBox.Location = new System.Drawing.Point(96, 42);
+            this.DeparturePointTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.DeparturePointTextBox.Name = "DeparturePointTextBox";
+            this.DeparturePointTextBox.Size = new System.Drawing.Size(131, 20);
+            this.DeparturePointTextBox.TabIndex = 0;
             // 
             // FlightControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.OkButton);
-            this.Controls.Add(this.EditButton);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.FlightsListBox);
-            this.Controls.Add(this.SelectedFlightInfoGroupBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FlightControl";
             this.Size = new System.Drawing.Size(524, 305);
             this.Load += new System.EventHandler(this.FlightControl_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.FlightPanel.ResumeLayout(false);
             this.SelectedFlightInfoGroupBox.ResumeLayout(false);
             this.SelectedFlightInfoGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -244,21 +264,23 @@
 
         #endregion
 
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel FlightPanel;
+        private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ListBox FlightsListBox;
         private System.Windows.Forms.GroupBox SelectedFlightInfoGroupBox;
-        private System.Windows.Forms.Label DestinationPointLabel;
-        private System.Windows.Forms.Label DeparturePointLabel;
-        private System.Windows.Forms.TextBox textBox_destinationPoint;
-        private System.Windows.Forms.TextBox textBox_departurePoint;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_departureTime;
+        private System.Windows.Forms.ComboBox FlightTypeComboBox;
+        private System.Windows.Forms.TextBox FlightDurationTextBox;
+        private System.Windows.Forms.DateTimePicker DepartureTimeDateTimePicker;
         private System.Windows.Forms.Label FlightTypeLabel;
         private System.Windows.Forms.Label FlightDurationLabel;
         private System.Windows.Forms.Label DepartureTimeLabel;
-        private System.Windows.Forms.ComboBox comboBox_flightType;
-        private System.Windows.Forms.TextBox textBox_flightDuration;
-        private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.Label DestinationPointLabel;
+        private System.Windows.Forms.Label DeparturePointLabel;
+        private System.Windows.Forms.TextBox DestinationPointTextBox;
+        private System.Windows.Forms.TextBox DeparturePointTextBox;
     }
 }

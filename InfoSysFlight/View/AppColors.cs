@@ -7,13 +7,23 @@ using System.Drawing;
 
 namespace InfoSysFlight.View
 {
-    static class AppColors
+    /// <summary>
+    /// Хранит информацию о цветах.
+    /// </summary>
+    public static class AppColors
     {
+        /// <summary>
+        /// Устанавливает цвет ошибки.
+        /// </summary>
         public static Color ColorOfError
         {
             get; set;
         }
         = Color.LightPink;
+
+        /// <summary>
+        /// Устанавливает стандартный цвет.
+        /// </summary>
         public static Color StandartColor
         {
             get; set;

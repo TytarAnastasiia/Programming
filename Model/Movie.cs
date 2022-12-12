@@ -69,7 +69,7 @@ namespace Programming.Model
             get { return _name; }
             set
             {
-                if (value != "" && value != null)
+                if (value.Length != 0 && value != null)
                     _name = value;
                 else throw new ArgumentException("Название должно быть задано!");
             }
@@ -83,7 +83,7 @@ namespace Programming.Model
             get { return _year; }
             set
             {
-                Validator.AssertValueInRange(value, 1900, DateTime.Now.Year, "Год");
+                Validator.AssertValueInRange(value, 1900, DateTime.Now.Year, nameof(Year));
                 _year = value;
             }
         }

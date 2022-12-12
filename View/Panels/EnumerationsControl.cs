@@ -4,6 +4,9 @@ using Programming.Model;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class EnumerationsControl : UserControl
     {
         /// <summary>
