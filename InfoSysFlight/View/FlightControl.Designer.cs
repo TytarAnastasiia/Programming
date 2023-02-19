@@ -92,8 +92,9 @@
             // 
             // EditButton
             // 
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EditButton.Image = ((System.Drawing.Image)(resources.GetObject("EditButton.Image")));
-            this.EditButton.Location = new System.Drawing.Point(98, 252);
+            this.EditButton.Location = new System.Drawing.Point(98, 253);
             this.EditButton.Margin = new System.Windows.Forms.Padding(2);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(78, 45);
@@ -103,8 +104,9 @@
             // 
             // DeleteButton
             // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
-            this.DeleteButton.Location = new System.Drawing.Point(180, 252);
+            this.DeleteButton.Location = new System.Drawing.Point(180, 253);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(78, 45);
@@ -114,8 +116,9 @@
             // 
             // AddButton
             // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
-            this.AddButton.Location = new System.Drawing.Point(16, 252);
+            this.AddButton.Location = new System.Drawing.Point(16, 253);
             this.AddButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(78, 45);
@@ -131,6 +134,7 @@
             this.FlightsListBox.Name = "FlightsListBox";
             this.FlightsListBox.Size = new System.Drawing.Size(242, 225);
             this.FlightsListBox.TabIndex = 12;
+            this.FlightsListBox.SelectedIndexChanged += new System.EventHandler(this.FlightsListBox_SelectedIndexChanged);
             // 
             // SelectedFlightInfoGroupBox
             // 
@@ -161,6 +165,7 @@
             this.FlightTypeComboBox.Name = "FlightTypeComboBox";
             this.FlightTypeComboBox.Size = new System.Drawing.Size(131, 21);
             this.FlightTypeComboBox.TabIndex = 9;
+            this.FlightTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_flightType_SelectedIndexChanged);
             // 
             // FlightDurationTextBox
             // 
@@ -169,6 +174,7 @@
             this.FlightDurationTextBox.Name = "FlightDurationTextBox";
             this.FlightDurationTextBox.Size = new System.Drawing.Size(131, 20);
             this.FlightDurationTextBox.TabIndex = 8;
+            this.FlightDurationTextBox.TextChanged += new System.EventHandler(this.textBox_flightDuration_TextChanged);
             // 
             // DepartureTimeDateTimePicker
             // 
@@ -178,6 +184,7 @@
             this.DepartureTimeDateTimePicker.Name = "DepartureTimeDateTimePicker";
             this.DepartureTimeDateTimePicker.Size = new System.Drawing.Size(131, 20);
             this.DepartureTimeDateTimePicker.TabIndex = 7;
+            this.DepartureTimeDateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_departureTime_ValueChanged);
             // 
             // FlightTypeLabel
             // 
@@ -236,6 +243,7 @@
             this.DestinationPointTextBox.Name = "DestinationPointTextBox";
             this.DestinationPointTextBox.Size = new System.Drawing.Size(131, 20);
             this.DestinationPointTextBox.TabIndex = 1;
+            this.DestinationPointTextBox.TextChanged += new System.EventHandler(this.textBox_destinationPoint_TextChanged);
             // 
             // DeparturePointTextBox
             // 
@@ -244,6 +252,7 @@
             this.DeparturePointTextBox.Name = "DeparturePointTextBox";
             this.DeparturePointTextBox.Size = new System.Drawing.Size(131, 20);
             this.DeparturePointTextBox.TabIndex = 0;
+            this.DeparturePointTextBox.TextChanged += new System.EventHandler(this.textBox_departurePoint_TextChanged);
             // 
             // FlightControl
             // 

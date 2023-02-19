@@ -13,5 +13,6 @@ namespace InfoSysFlight
         {
             flightControl1.WriteFlightsToFile();
         }
+
     }
 }

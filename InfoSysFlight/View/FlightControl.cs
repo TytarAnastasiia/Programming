@@ -15,7 +15,7 @@ namespace InfoSysFlight.View
 {
     public partial class FlightControl : UserControl
     {
-        private static string FILE_NAME = "flight.txt";
+        private static string FILE_NAME = "flights.txt";
 
         private List <Flight> _flightList;
 
@@ -32,145 +32,55 @@ namespace InfoSysFlight.View
         /// </summary>
         public FlightControl()
         {
+            _isEditClicked = false;
+            _isAddClicked = false;
             InitializeComponent();
             DepartureTimeDateTimePicker.MinDate = DateTime.Now;
-            DepartureTimeDateTimePicker.MaxDate = new DateTime(DateTime.Now.Year+1, DateTime.Now.Month,
-                DateTime.Now.Day);
+            DepartureTimeDateTimePicker.MaxDate = DateTime.Now.AddYears(1);
             DepartureTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
             foreach (var value in Enum.GetValues(typeof(FlightType)))
             {
                 FlightTypeComboBox.Items.Add(value);
             }
             OkButton.Visible = false;
+
+ 
+            _flightList = new List<Flight> { };
+
         }
 
-        /// <summary>
-        /// Считывает все файлы и переводит в кодировку UTF8.
-        /// </summary>
-        /// <param name="filePath">Путь к файлу.</param>
-        /// <returns></returns>
-        private string ReadAllFile(string filePath)
-        {
-            string result = null;
-            FileStream reader = null;
-            try
-            {
-                reader = File.OpenRead(filePath);
-                byte[] buffer = new byte[reader.Length];
-                reader.Read(buffer, 0, buffer.Length);
-                result = Encoding.UTF8.GetString(buffer);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            } finally
-            {
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-            }
-            return result;
-        }
 
-        /// <summary>
-        /// Считывает информацию из файла и добавляет в листбокс.
-        /// </summary>
-        /// <param name="filePath">Путь к файлу.</param>
-        public void ReadFlightsFromFile(string filePath)
-        {
-            try
-            {
-                string result = ReadAllFile(filePath);
-                string[] flightArray = result.Split("\n".ToCharArray());
-                for (int i = 0; i < flightArray.Length; i++)
-                {
-                    if (flightArray[i].Length == 0) break;
-                    try 
-                    {
-                        Flight fileFlight = ParseFlight(flightArray[i]);
-                        _flightList.Add(fileFlight);
-                        FlightsListBox.Items.Add(fileFlight.FlightToString());
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine("ERROR! " + exception.ToString());
-                        MessageBox.Show(exception.Message);
-                    }
-                }
-                
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine("ERROR! " + exception.ToString());
-                MessageBox.Show(exception.Message);
-            }
-        }
-
-        /// <summary>
-        /// Разбивает строку на слова.
-        /// </summary>
-        /// <param name="flightString">Строка, содержащая информацию о перелёте.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        private Flight ParseFlight(string flightString)
-        {
-            string[] words = flightString.Split(';');
-            if (words.Length < 4)
-            {
-                throw new ArgumentException("Некорректная строка полета '" + flightString + "'");
-            }
-            try
-            {
-                DateTime date = Convert.ToDateTime(words[2]);
-                int duration = Convert.ToInt32(words[3]);
-                if (!Enum.TryParse(words[4], out FlightType flightType))
-                {
-                    throw new ArgumentException("Неправильный тип перелёта '" + words[4] + "'");
-                }
-                return new Flight(words[0], words[1], date, duration, flightType);
-            }
-            catch (Exception exception)
-            {
-                throw new ArgumentException("Неправильная дата '" + words[2] +"' или продолжительность '" + words[3] + "'",exception);
-            }
-        }
 
          /// <summary>
          /// Записывает информацию в файл.
          /// </summary>
         public void WriteFlightsToFile()
         {
-            FileStream stream = new FileStream(FILE_NAME, FileMode.Create);
-            for (int i = 0; i < _flightList.Count; i++)
-            {
-                byte[] buffer = Encoding.Default.GetBytes(_flightList[i].AllInfoToString() + "\n");
-                stream.Write(buffer, 0, buffer.Length);
-            }
-            stream.Close();
+            FlightSerializer.SaveToFile(_flightList, FILE_NAME);
         }
             
          private void FlightControl_Load(object sender, EventArgs e)
         {
-            _flightList = new List<Flight>();
-            _isEditClicked = false;
-            _isAddClicked = false;
             if (File.Exists(FILE_NAME))
             {
-                ReadFlightsFromFile(FILE_NAME);
+                try 
+                {
+                    _flightList = FlightSerializer.LoadFromFile(FILE_NAME);
+                }
+                catch(Exception exception)
+                {
+                    MessageBox.Show("Ошибка в формате файла ("+exception.Message+"). Файл будет удалён.");
+                    File.Delete(FILE_NAME);
+                }
+               
             }
+            if (_flightList == null)
+            {
+                _flightList = new List<Flight>();
+            }
+            SortFlight();
         }
 
-        /// <summary>
-        /// Создаёт новый экземпляр класса Flight.
-        /// </summary>
-        private void CreateFlight()
-        {
-            _currentFlight = new Flight();
-            _flightList.Add(_currentFlight);
-            FlightsListBox.SelectedIndex = 
-                FlightsListBox.Items.Add(_currentFlight.FlightToString());
-        }
 
         private void textBox_departurePoint_TextChanged(object sender, EventArgs e)
         {
@@ -294,6 +204,10 @@ namespace InfoSysFlight.View
                 FlightTypeComboBox.SelectedItem = _currentFlight.TypeOfFlight;
                 if (_currentFlight.DepartureTime >= DepartureTimeDateTimePicker.MinDate)
                     DepartureTimeDateTimePicker.Value = _currentFlight.DepartureTime; 
+            } 
+            else
+            {
+                CleanControls();
             }
         }
 
@@ -312,19 +226,33 @@ namespace InfoSysFlight.View
         private void SortFlight()
         {
             _flightList = _flightList.OrderBy(f => f.DepartureTime).ToList();
+            int currentIndex = _flightList.IndexOf(_currentFlight);
+            if (currentIndex < 0)
+            {
+                currentIndex = 0;
+            }
             FlightsListBox.Items.Clear();
             for(int i = 0; i < _flightList.Count; i++)
             {
                 FlightsListBox.Items.Add(_flightList[i].FlightToString());
             }
+            if (currentIndex >=0 && currentIndex < FlightsListBox.Items.Count)
+            {
+                FlightsListBox.SelectedIndex = currentIndex;
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _isEditClicked = false;
-            CreateFlight();
-            _isAddClicked = true;
-            OkButton.Visible = true;
+            if (!_isAddClicked)
+            {
+                _isEditClicked = false;
+                _isAddClicked = true;
+                OkButton.Visible = true;
+                AddButton.Enabled = false;
+                EditButton.Enabled = false;
+                DeleteButton.Enabled = false;
+            }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -339,7 +267,13 @@ namespace InfoSysFlight.View
                 _flightList.RemoveAt(flightIndex);
                 FlightsListBox.Items.RemoveAt(flightIndex);
                 FlightsListBox.SelectedIndex = -1;
-                CleanControls();
+                _currentFlight = null;
+                if (_flightList.Count > 0)
+                {
+                    FlightsListBox.SelectedIndex = 0;
+                    _currentFlight = _flightList[FlightsListBox.SelectedIndex];
+                }
+                ShowFlightInfo();
             }
             else
             {
@@ -358,28 +292,64 @@ namespace InfoSysFlight.View
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (_isEditClicked || _isAddClicked)
-            {
-                if (_currentFlight != null)
+//            if (_isEditClicked || _isAddClicked)
+//            {
+               try
+               {
+                    if (_isAddClicked)
+                    {
+                        _currentFlight = newFlight();
+                        _flightList.Add(_currentFlight);
+                    }
+                    else if (_isEditClicked)
                 {
-                    try
-                    {
-                        _currentFlight.DeparturePoint = DeparturePointTextBox.Text;
-                        _currentFlight.DestinationPoint = DestinationPointTextBox.Text;
-                        _currentFlight.DepartureTime = DepartureTimeDateTimePicker.Value;
-                        _currentFlight.FlightDuration = Convert.ToInt32(FlightDurationTextBox.Text);
-                        _currentFlight.TypeOfFlight = ftype;
-                        SortFlight();
-                    }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show("Невозможно сохранить с неправильным значением. " + exception.Message);
-                    }
+                    updateFlight(_currentFlight);
                 }
-            }
+                    SortFlight();
+               }
+               catch (Exception exception)
+               {
+                        MessageBox.Show("Невозможно сохранить с неправильным значением. " + exception.Message);
+               }
+//            }
             _isEditClicked = false;
             _isAddClicked = false;
             OkButton.Visible = false;
+            AddButton.Enabled = true;
+            EditButton.Enabled = true;
+            DeleteButton.Enabled = true;
+        }
+
+        private Flight newFlight()
+        {
+            return new Flight(DeparturePointTextBox.Text,
+                DestinationPointTextBox.Text,
+                DepartureTimeDateTimePicker.Value,
+                Convert.ToInt32(FlightDurationTextBox.Text),
+                ftype
+                );
+        }
+        private Flight updateFlight(Flight flight)
+        {
+            flight.DeparturePoint = DeparturePointTextBox.Text;
+            flight.DestinationPoint = DestinationPointTextBox.Text;
+            flight.DepartureTime = DepartureTimeDateTimePicker.Value;
+            flight.FlightDuration = Convert.ToInt32(FlightDurationTextBox.Text);
+            flight.TypeOfFlight = ftype;
+            return flight;
+        }
+
+        private void FlightsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(FlightsListBox.SelectedIndex < 0 && _flightList.Count > 0)
+            {
+                FlightsListBox.SelectedIndex = 0;
+            }
+            if (FlightsListBox.SelectedIndex >= 0 && FlightsListBox.SelectedIndex < _flightList.Count)
+            {
+                _currentFlight = _flightList[FlightsListBox.SelectedIndex];
+            }
+            ShowFlightInfo();
         }
     }
 }
